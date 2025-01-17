@@ -1,0 +1,102 @@
+@startuml
+package "Backend" {
+  class FlaskApp {
+    + get_tasks(): Response
+    + add_task(): Response
+    + delete_task(task_id: number): Response
+    + update_task(task_id: number): Response
+    + update_task_order(): Response
+    + sort_tasks_by_due_date(): Response
+    + delete_completed_tasks(): Response
+    + get_tasks_by_due_date(): Response
+  }
+}
+
+package "Types" {
+  class TaskState {
+    - tasks: Task[]
+    - currentEditTask: Task
+    - currentEditTaskIndex: number
+    - isEditModalVisible: boolean
+    - currentPage: number
+    - tasksPerPage: number
+    - newTask: string
+    - newTaskDetails: string
+    - selectedTasks: number[]
+    - selectedTask: Task
+    - paginatedTasks: Task[]
+  }
+  
+  class Task {
+    - id: number
+    - text: string
+    - completed: boolean
+    - dueDate: string
+    - details: string
+    - order: number
+  }
+}
+
+package "Composables" {
+  class useTasks {
+    - taskState: TaskState
+    - operations: TaskOperations
+    + loadTasks(): void
+    + fetchTasksByDueDate(dueDate: string): void
+  }
+  
+  class useTaskPagination {
+    - state: TaskState
+    - totalPages: number
+    - paginatedTasks: Task[]
+  }
+  
+  class useTaskOperations {
+    + addTask(): void
+    + removeSelectedTasks(): void
+    + cleanupInput(): void
+    + deselectAllTasks(): void
+    + loadTasks(): void
+  }
+  
+  class useTaskNotification {
+    - showToast: boolean
+    - toastType: string
+    - toastMessage: string
+    + showToastMessage(message: string, type: string): void
+  }
+  
+  class useTaskEdit {
+    + openEditModal(index: number): void
+    + closeEditModal(): void
+    + saveEditTask(): void
+    + getPriorityColor(dueDate: string): string
+  }
+  
+  class useTaskDragDrop {
+    - draggedTaskIndex: number
+    - draggingTaskIndex: number
+    - dragDirection: string
+    + onDragStart(index: number): void
+    + onDragOver(index: number): void
+    + onDrop(index: number): void
+  }
+  
+  class useFormattedDueDate {
+    - formattedDueDate: string
+    + getFormattedDueDate(dueDate: string): string
+  }
+}
+
+FlaskApp <|-- TaskState
+TaskState *-- Task
+useTasks --> TaskState
+useTasks --> TaskOperations
+useTaskPagination --> TaskState
+useTaskPagination --> Task
+useTaskOperations --> Task
+useTaskNotification --> Task
+useTaskEdit --> Task
+useTaskDragDrop --> Task
+useFormattedDueDate --> Task
+@enduml
