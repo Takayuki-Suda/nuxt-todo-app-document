@@ -133,7 +133,7 @@
 
 データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています：
 
-![initialize_db](../backend/sql/initialize_db.sql)
+![initialize_db](/docs/sample/backend/sql/initialize_db.sql)
 
 このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます：
 
@@ -154,13 +154,13 @@
 
 フロントエンドの主要なコード例を提供します。
 
-![TaskList](../frontend/src/components/TaskList.vue)
+![TaskList](/docs/sample/frontend/src/components/TaskList.vue)
 
 ### 6.2 バックエンドコード
 
 サーバサイドのサンプルコードを提供します。
 
-![app](../backend/app.py)
+![app](/docs/sample/backend/app.py)
 
 ## 7. 使用技術の詳細
 
