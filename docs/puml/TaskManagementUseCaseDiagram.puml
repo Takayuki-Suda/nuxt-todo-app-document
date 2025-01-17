@@ -1,0 +1,23 @@
+@startuml
+actor ユーザー
+actor 管理者
+
+usecase "タスクを追加" as UC_AddTask
+usecase "タスクを編集" as UC_EditTask
+usecase "タスクを削除" as UC_DeleteTask
+usecase "タスクを表示" as UC_ViewTask
+usecase "通知を設定" as UC_SetNotification
+usecase "ユーザーを管理" as UC_ManageUser
+
+ユーザー --> UC_AddTask
+ユーザー --> UC_EditTask
+ユーザー --> UC_DeleteTask
+ユーザー --> UC_ViewTask
+ユーザー --> UC_SetNotification
+
+管理者 --> UC_ManageUser
+
+UC_AddTask .> UC_ViewTask : include
+UC_EditTask .> UC_ViewTask : include
+UC_DeleteTask .> UC_ViewTask : include
+@enduml

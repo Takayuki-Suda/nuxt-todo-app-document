@@ -1,0 +1,30 @@
+@startuml
+skinparam rectangle {
+    BackgroundColor #DDDDDD
+    BorderColor black
+}
+
+actor User
+
+rectangle "Frontend" {
+    [TaskInput (Vue, Nuxt3)] --> [TaskController (Flask)]
+    [TaskList (Vue, Nuxt3)] --> [TaskController (Flask)]
+    [ToastNotification (Vue, Nuxt3)] -- [TaskInput (Vue, Nuxt3)]
+}
+
+rectangle "Backend" {
+    [TaskController (Flask)] --> [TaskService (Flask)]
+    [TaskService (Flask)] --> [TaskTable (MySQL)]
+}
+
+database "Database" {
+    [TaskTable (MySQL)]
+}
+
+User --> [TaskInput (Vue, Nuxt3)]
+[TaskTable (MySQL)] --> [TaskService (Flask)]
+[TaskService (Flask)] --> [TaskController (Flask)]
+[TaskController (Flask)] --> [TaskInput (Vue, Nuxt3)]
+[TaskInput (Vue, Nuxt3)] --> User
+
+@enduml

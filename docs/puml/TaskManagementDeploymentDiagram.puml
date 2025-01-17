@@ -1,0 +1,25 @@
+@startuml
+node "User Device" {
+  [Web Browser]
+}
+
+node "Web Server" {
+  [Frontend Application]
+}
+
+node "Application Server" {
+  [Backend Services]
+  [API Endpoints]
+}
+
+node "Database Server" {
+  [Task Database]
+  [User Database]
+}
+
+[Web Browser] --> [Frontend Application] : HTTP Request
+[Frontend Application] --> [Backend Services] : API Call
+[Backend Services] --> [API Endpoints] : Data Request
+[API Endpoints] --> [Task Database] : Query
+[API Endpoints] --> [User Database] : Query
+@enduml

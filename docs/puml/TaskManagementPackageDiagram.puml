@@ -1,0 +1,45 @@
+@startuml
+package "User Management" {
+  [User Registration] 
+  [User Authentication]
+}
+
+package "Task Management" {
+  [Task Creation] 
+  [Task Editing]
+  [Task Deletion]
+  [Task Display]
+  [Task Searching]
+  [Task Sorting]
+  [Task Completion]
+}
+
+package "Database Management" {
+  [Task Data Access]
+  [User Data Access]
+  [Task History Access]
+}
+
+package "Interface" {
+  [User Interface]
+  [Input Form]
+  [Button Operations]
+}
+
+[User Registration] --> [User Authentication]
+[User Authentication] --> [Task Creation]
+[Task Creation] --> [Task Editing]
+[Task Editing] --> [Task Deletion]
+[Task Display] --> [Task Data Access]
+[Task Searching] --> [Task Data Access]
+[Task Sorting] --> [Task Data Access]
+[Task Completion] --> [Task Data Access]
+[User Authentication] --> [User Data Access]
+[Task Data Access] --> [Task Creation]
+[Task Data Access] --> [Task History Access]
+
+[User Interface] --> [Input Form]
+[Input Form] --> [Task Creation]
+[Button Operations] --> [Task Sorting]
+[Button Operations] --> [Task Searching]
+@enduml

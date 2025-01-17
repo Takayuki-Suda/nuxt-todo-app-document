@@ -1,0 +1,38 @@
+@startuml
+package "Frontend" {
+  [TaskManager] --> [TaskInput]
+  [TaskManager] --> [TaskList]
+  [TaskManager] --> [TaskControls]
+  [TaskManager] --> [Pagination]
+  [TaskManager] --> [ToastNotification]
+  [TaskList] --> [TaskDetailsModal]
+  [TaskList] --> [EditModal]
+}
+
+package "Composables" {
+  [useTaskState] --> [TaskManager]
+  [useTaskOperations] --> [TaskManager]
+  [useTaskPagination] --> [TaskManager]
+  [useTaskEdit] --> [TaskManager]
+  [useTaskNotification] --> [ToastNotification]
+  [useTaskDragDrop] --> [TaskList]
+  [useFormattedDueDate] --> [TaskList]
+}
+
+package "Backend" {
+  [FlaskApp] --> [TaskManager]
+}
+
+' クラス図との関連性を示すためにテストコンポーネントも含めます
+package "Tests" {
+  [EditModalSpec] --> [EditModal]
+  [PaginationSpec] --> [Pagination]
+  [TaskControlsSpec] --> [TaskControls]
+  [TaskDetailsModalSpec] --> [TaskDetailsModal]
+  [TaskInputSpec] --> [TaskInput]
+  [TaskListSpec] --> [TaskList]
+  [TaskManagerSpec] --> [TaskManager]
+  [ToastNotificationSpec] --> [ToastNotification]
+}
+
+@enduml

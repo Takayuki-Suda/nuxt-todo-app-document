@@ -1,0 +1,10 @@
+@startuml
+entity "Task" as T {
+  + ID: int [PK]
+  --
+  Text: string
+  Completed: bool
+  DueDate: datetime
+}
+
+@enduml

@@ -1,0 +1,12 @@
+CREATE DATABASE task_db;
+
+USE task_db;
+
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    text VARCHAR(255) NOT NULL,
+    completed BOOLEAN DEFAULT FALSE,
+    dueDate DATETIME NOT NULL
+);
+ALTER TABLE tasks CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+

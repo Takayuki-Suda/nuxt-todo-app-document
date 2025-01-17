@@ -1,0 +1,101 @@
+@startuml
+skinparam monochrome false
+skinparam componentStyle rectangle
+skinparam backgroundColor #fdfdfd
+
+' フロントエンド
+package "Frontend (Vue, Nuxt3)" #LightBlue {
+    [TaskInput] as taskInput <<Component>> #LightGreen
+    [TaskList] as taskList <<Component>> #LightGreen
+    [Pagination] as pagination <<Component>> #LightGreen
+    [TaskDetailsModal] as detailsModal <<Component>> #LightGreen
+    [TaskControls] as taskControls <<Component>> #LightGreen
+    [EditModal] as editModal <<Component>> #LightGreen
+    [ToastNotification] as toast <<Component>> #LightGreen
+
+    [TaskManager] as taskManager <<Component>> #LightGreen
+}
+
+' ユーザー操作
+actor User
+User -> taskManager : Adds, Views, Edits tasks
+
+' フロントエンドとバックエンドの通信
+taskInput --> [Backend (Flask)] : POST /tasks
+taskList --> [Backend (Flask)] : GET /tasks
+
+' バックエンド
+package "Backend (Flask)" #LightYellow {
+    [TaskController] as taskController <<Controller>> #LightPink
+    [TaskService] as taskService <<Service>> #LightPink
+    [Database] as database <<Storage>> #LightPink
+}
+
+taskController --> taskService : Calls services
+taskService --> database : Executes queries
+
+' データベース
+database --> [Database (MySQL)] : Task records
+
+package "Database (MySQL)" #LightGray {
+    [Task] <<Table>> #White
+}
+
+' フロントエンドフロー
+taskInput --> taskList : Sends task data
+taskList --> pagination : Manages pagination
+taskList --> detailsModal : Shows task details
+detailsModal --> editModal : Opens for editing
+taskList --> taskControls : Controls task actions
+taskList --> toast : Triggers notification
+
+' エラー処理
+taskInput --> toast : Shows error (Validation failed)
+[Backend (Flask)] --> toast : Shows error (Server failed)
+
+' 説明コメント
+note right of taskInput
+  Collects task input from the user.
+end note
+
+note right of taskList
+  Displays list of tasks retrieved from the backend.
+end note
+
+note right of pagination
+  Manages pagination of the task list.
+end note
+
+note right of detailsModal
+  Shows detailed information about a selected task.
+end note
+
+note right of taskControls
+  Provides controls for task actions such as edit and delete.
+end note
+
+note right of editModal
+  Opens for editing a selected task.
+end note
+
+note right of toast
+  Triggers notifications for user actions and errors.
+end note
+
+note right of taskManager
+  Manages all task-related operations.
+end note
+
+note right of taskController
+  Handles HTTP requests and forwards them to the service layer.
+end note
+
+note right of taskService
+  Contains the business logic and interacts with the database.
+end note
+
+note right of database
+  Stores task records.
+end note
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+[*] --> NotStarted : タスク作成 (Task Created)
+NotStarted --> InProgress : タスク開始 (Task Start)
+NotStarted --> Canceled : タスクキャンセル (Task Cancel)
+
+InProgress --> OnHold : タスク保留 (Task Hold)
+InProgress --> Completed : タスク完了 (Task Complete)
+InProgress --> Deleted : タスク削除 (Task Delete)
+
+OnHold --> InProgress : タスク再開 (Task Resume)
+OnHold --> Completed : タスク完了 (Task Complete)
+
+Completed --> Deleted : タスク削除 (Task Delete)
+Canceled --> Deleted : タスク削除 (Task Delete)
+
+state NotStarted
+state InProgress
+state OnHold
+state Completed
+state Canceled
+state Deleted
+
+note right of NotStarted
+  タスクがまだ開始されていない状態
+end note
+
+note right of InProgress
+  タスクが実行中の状態
+end note
+
+note right of OnHold
+  タスクが一時的に保留されている状態
+end note
+
+note right of Completed
+  タスクが完了した状態
+end note
+
+note right of Canceled
+  タスクがキャンセルされた状態
+end note
+
+note right of Deleted
+  タスクが削除された状態
+end note
+@enduml

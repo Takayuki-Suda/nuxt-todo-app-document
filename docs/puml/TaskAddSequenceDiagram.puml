@@ -1,0 +1,12 @@
+@startuml
+actor User
+
+User -> TaskInput: Enter task details
+TaskInput -> TaskManager: addTask()
+TaskManager -> TaskOperations: addTask(taskDetails)
+TaskOperations -> FlaskApp: POST /tasks (taskDetails)
+FlaskApp --> TaskOperations: 201 Created (newTask)
+TaskOperations --> TaskManager: newTask
+TaskManager -> TaskList: updateList(newTask)
+TaskList -> User: Display new task
+@enduml

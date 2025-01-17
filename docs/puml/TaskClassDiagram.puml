@@ -26,7 +26,7 @@ package "Types" {
     - selectedTask: Task
     - paginatedTasks: Task[]
   }
-  
+
   class Task {
     - id: number
     - text: string
@@ -44,35 +44,35 @@ package "Composables" {
     + loadTasks(): void
     + fetchTasksByDueDate(dueDate: string): void
   }
-  
+
   class useTaskPagination {
     - state: TaskState
     - totalPages: number
     - paginatedTasks: Task[]
   }
-  
+
   class useTaskOperations {
     + addTask(): void
     + removeSelectedTasks(): void
-    + cleanupInput(): void
+    + clearInput(): void
     + deselectAllTasks(): void
     + loadTasks(): void
   }
-  
+
   class useTaskNotification {
     - showToast: boolean
     - toastType: string
     - toastMessage: string
     + showToastMessage(message: string, type: string): void
   }
-  
+
   class useTaskEdit {
     + openEditModal(index: number): void
     + closeEditModal(): void
     + saveEditTask(): void
     + getPriorityColor(dueDate: string): string
   }
-  
+
   class useTaskDragDrop {
     - draggedTaskIndex: number
     - draggingTaskIndex: number
@@ -81,10 +81,65 @@ package "Composables" {
     + onDragOver(index: number): void
     + onDrop(index: number): void
   }
-  
+
   class useFormattedDueDate {
     - formattedDueDate: string
     + getFormattedDueDate(dueDate: string): string
+  }
+
+  class useTaskState {
+    - state: TaskState
+    - taskDisplayOptions: number[]
+  }
+}
+
+package "Tests" {
+  class EditModalSpec {
+    + testRender(): void
+    + testCloseButton(): void
+    + testSaveButton(): void
+  }
+
+  class PaginationSpec {
+    + testRender(): void
+    + testPrevButton(): void
+    + testNextButton(): void
+    + testPageButton(): void
+  }
+
+  class TaskControlsSpec {
+    + testRemoveButton(): void
+    + testDeselectButton(): void
+  }
+
+  class TaskDetailsModalSpec {
+    + testRender(): void
+    + testCloseButton(): void
+    + testEditButton(): void
+  }
+
+  class TaskInputSpec {
+    + testRender(): void
+    + testAddButton(): void
+    + testClearButton(): void
+  }
+
+  class TaskListSpec {
+    + testRender(): void
+    + testPriorityLabel(): void
+    + testDragAndDrop(): void
+  }
+
+  class TaskManagerSpec {
+    + testRender(): void
+    + testAddButton(): void
+    + testRemoveButton(): void
+    + testPagination(): void
+  }
+
+  class ToastNotificationSpec {
+    + testRender(): void
+    + testCloseButton(): void
   }
 }
 
@@ -99,4 +154,13 @@ useTaskNotification --> Task
 useTaskEdit --> Task
 useTaskDragDrop --> Task
 useFormattedDueDate --> Task
+useTaskState --> TaskState
+EditModalSpec --> EditModal
+PaginationSpec --> Pagination
+TaskControlsSpec --> TaskControls
+TaskDetailsModalSpec --> TaskDetailsModal
+TaskInputSpec --> TaskInput
+TaskListSpec --> TaskList
+TaskManagerSpec --> TaskManager
+ToastNotificationSpec --> ToastNotification
 @enduml
