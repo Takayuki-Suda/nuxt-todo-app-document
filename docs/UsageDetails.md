@@ -160,6 +160,22 @@
 
 ![TaskList](/docs/sample/frontend/src/components/TaskList.vue)
 
+#### タスク詳細画面
+
+![TaskDetail](sample/frontend/images/task_detail.png)
+
+#### タスク編集画面
+
+![TaskEdit](sample/frontend/images/task_edit.png)
+
+#### タスクフィルター画面
+
+![TaskFilter](sample/frontend/images/task_filter.png)
+
+#### タスク一覧画面
+
+![TaskList](sample/frontend/images/task_list.png)
+
 ### 6.2 バックエンドコード
 
 サーバサイドのサンプルコードを提供します。
