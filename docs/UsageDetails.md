@@ -26,7 +26,8 @@
 
 ### 2.1 アーキテクチャ図
 
-アプリケーションの全体アーキテクチャ図を提供し、各コンポーネントの関係を示します。
+アーキテクチャ図はアプリケーション全体の構成を視覚的に示します。各コンポーネント間の関係とデータフローが明確にわかります。
+以下にアプリケーションの全体アーキテクチャ図を提供し、各コンポーネントの関係を示します。
 
 ![TaskManagementArchitectureDiagram](images/TaskManagementArchitectureDiagram.png)
 ![SystemArchitectureDiagram](images/SystemArchitectureDiagram.png)
@@ -62,7 +63,8 @@
 
 ### 4.1 全体のフローチャート
 
-アプリケーション全体のフローチャートを提供し、主要な操作フローを示します。
+以下のフローチャートは、アプリケーション全体の主要な操作フローを示しています。ユーザーの操作に基づくシステムの挙動が一目でわかります。
+これにより、設計書がさらにわかりやすくなり、他の開発者にも理解しやすくなります。
 
 ![TaskManagementFlowchart](images/TaskManagementFlowchart.png)
 ![DetailedInteractionDiagram](images/DetailedInteractionDiagram.png)
