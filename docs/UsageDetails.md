@@ -29,6 +29,7 @@
 アプリケーションの全体アーキテクチャ図を提供し、各コンポーネントの関係を示します。
 
 ![TaskManagementArchitectureDiagram](images/TaskManagementArchitectureDiagram.png)
+![SystemArchitectureDiagram](images/SystemArchitectureDiagram.png)
 
 ### 2.2 コンポーネント説明
 
@@ -64,12 +65,19 @@
 アプリケーション全体のフローチャートを提供し、主要な操作フローを示します。
 
 ![TaskManagementFlowchart](images/TaskManagementFlowchart.png)
+![DetailedInteractionDiagram](images/DetailedInteractionDiagram.png)
+![SimpleInteractionDiagram](images/SimpleInteractionDiagram.png)
+![TaskManagementDeploymentDiagram](images/TaskManagementDeploymentDiagram.png)
+![TaskManagementPackageDiagram](images/TaskManagementPackageDiagram.png)
+![TaskManagementUseCaseDiagram](images/TaskManagementUseCaseDiagram.png)
 
 ### 4.2 フロントエンドフローチャート
 
 フロントエンドの具体的な操作フローを示すフローチャートです。
 
 ![FrontendTaskFlowchart](images/FrontendTaskFlowchart.png)
+![TaskAddSequenceDiagram](images/TaskAddSequenceDiagram.png)
+![TaskClassDiagram](images/TaskClassDiagram.png)
 
 ### 4.3 詳細なプロセス説明
 
@@ -137,7 +145,7 @@
 
 データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています：
 
-![initialize_db](/docs/sample/backend/sql/initialize_db.sql)
+![initialize_db](sample/backend/sql/initialize_db.sql)
 
 このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます：
 
@@ -158,7 +166,7 @@
 
 フロントエンドの主要なコード例を提供します。
 
-![TaskList](/docs/sample/frontend/src/components/TaskList.vue)
+![TaskList](sample/frontend/src/components/TaskList.vue)
 
 ### 6.1.1 フロントエンドデザイン
 
@@ -184,7 +192,7 @@
 
 サーバサイドのサンプルコードを提供します。
 
-![app](/docs/sample/backend/app.py)
+![app](sample/backend/app.py)
 
 ## 7. 使用技術の詳細
 
