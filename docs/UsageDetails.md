@@ -160,6 +160,10 @@
 
 ![TaskList](/docs/sample/frontend/src/components/TaskList.vue)
 
+### 6.1.1 フロントエンドデザイン
+
+このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
+
 #### タスク詳細画面
 
 ![TaskDetail](sample/frontend/images/task_detail.png)
