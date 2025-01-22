@@ -16,3 +16,10 @@ flowchart 作成方法
 
 ブランチを作成したらリモートリポジトリにプッシュする
 git push -u origin <ブランチ名>
+
+AsciiDoc 使用方法
+1.gem install asciidoctor
+2.gem install asciidoctor-diagram
+3.VS Code: 拡張機能「AsciiDoc」をインストール。
+4.asciidoctor -r asciidoctor-diagram xxx.adoc
+(asciidoctor -r asciidoctor-diagram -D docs/html docs/adoc/a.adoc)
