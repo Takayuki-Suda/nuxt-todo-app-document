@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "asciidoctor.asciidoctor-vscode",
+    "adam-bender.commit-message-editor",
+    "mhutchie.git-graph",
+    "jebbs.plantuml",
+    "esbenp.prettier-vscode",
+  ]
+}
