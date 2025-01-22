@@ -2540,11 +2540,30 @@ ALTER TABLE tasks CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</
             <div class="paragraph">
               <p>フロントエンドの主要なコード例を提供します。</p>
             </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-vue" data-lang="vue">&lt;template&gt;
+            <div class="sect3">
+              <h4 id="_6_1_1_フロントエンドの初期化">
+                6.1.1 フロントエンドの初期化
+              </h4>
+              <div class="paragraph">
+                <p>Nuxt プロジェクトを初期化します。</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_6_1_2_フロントエンドのコード例">
+                6.1.2 フロントエンドのコード例
+              </h4>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-vue" data-lang="vue">&lt;template&gt;
   &lt;div&gt;
     &lt;h1&gt;タスク一覧&lt;/h1&gt;
     &lt;ul&gt;
@@ -2589,11 +2608,12 @@ button {
   margin-left: 10px;
 }
 &lt;/style&gt;</code></pre>
+                </div>
               </div>
             </div>
             <div class="sect3">
-              <h4 id="_6_1_1_フロントエンドデザイン">
-                6.1.1 フロントエンドデザイン
+              <h4 id="_6_1_3_フロントエンドデザイン">
+                6.1.3 フロントエンドデザイン
               </h4>
               <div class="paragraph">
                 <p>
@@ -2924,6 +2944,117 @@ if __name__ == '__main__':
               </ol>
             </div>
           </div>
+          <div class="sect2">
+            <h3 id="_7_5_環境変数の設定">7.5 環境変数の設定</h3>
+            <div class="listingblock">
+              <div class="title">
+                env ファイルを作成し、以下の内容を記入します:
+              </div>
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-env" data-lang="env">MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=root123!
+MYSQL_DB=task_db
+MYSQL_CURSORCLASS=DictCursor</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_7_6_仮想環境の作成と依存関係の設定">
+              7.6 仮想環境の作成と依存関係の設定
+            </h3>
+            <div class="paragraph">
+              <p>
+                依存関係を隔離することで競合を防ぐため、仮想環境を作成します。
+              </p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-bash" data-lang="bash">python -m venv venv</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>作成した仮想環境を有効にするコマンド（Bash シェルの場合）:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-bash" data-lang="bash">source venv/Scripts/activate</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>`.gitignore`ファイルに以下の行を追加します:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-git" data-lang="git">venv/</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>パッケージをインストールします:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-bash" data-lang="bash">pip install -r requirements.txt</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>requirements.txt の内容:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-text" data-lang="text">blinker==1.9.0
+click==8.1.8
+colorama==0.4.6
+Flask==3.1.0
+Flask-Cors==5.0.0
+Flask-MySQLdb==2.0.0
+itsdangerous==2.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+mysqlclient==2.2.7
+python-dotenv==1.0.1
+Werkzeug==3.1.3</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>
+                Nuxt.js
+                を使用して開発サーバーを起動するには、以下のコマンドを実行します:
+              </p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-bash" data-lang="bash">npm run dev</code></pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>
+                Flask
+                アプリケーションを実行するには、以下のコマンドを実行します:
+              </p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre
+                  class="highlight"
+                ><code class="language-bash" data-lang="bash">python app.py</code></pre>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="sect1">
@@ -3024,7 +3155,7 @@ if __name__ == '__main__':
       </div>
     </div>
     <div id="footer">
-      <div id="footer-text">Last updated 2025-01-21 13:01:32 +0900</div>
+      <div id="footer-text">Last updated 2025-01-22 10:46:03 +0900</div>
     </div>
   </body>
 </html>

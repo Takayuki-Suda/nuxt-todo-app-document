@@ -156,12 +156,24 @@ image::../images/TaskDatabaseERDiagram.png[ER図]
 
 フロントエンドの主要なコード例を提供します。
 
+==== 6.1.1 フロントエンドの初期化
+
+Nuxt プロジェクトを初期化します。
+
+[source, bash, subs="verbatim"]
+----
+npx nuxi init
+----
+
+==== 6.1.2 フロントエンドのコード例
+
+
 [source, vue, subs="verbatim"]
 ----
 include::../sample/frontend/src/components/TaskList.vue[タスク一覧コンポーネント]
 ----
 
-==== 6.1.1 フロントエンドデザイン
+==== 6.1.3 フロントエンドデザイン
 
 このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
 
@@ -244,6 +256,81 @@ include::../sample/backend/app.py[]
 3. **TypeScript**
    - **説明**: 型安全な JavaScript で、コードの品質と保守性を向上させます。
    - **バージョン**: `^5.7.2`
+
+=== 7.5 環境変数の設定
+
+.env ファイルを作成し、以下の内容を記入します:
+
+[source, env, subs="verbatim"]
+----
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=root123!
+MYSQL_DB=task_db
+MYSQL_CURSORCLASS=DictCursor
+----
+
+=== 7.6 仮想環境の作成と依存関係の設定
+
+依存関係を隔離することで競合を防ぐため、仮想環境を作成します。
+
+[source, bash, subs="verbatim"]
+----
+python -m venv venv
+----
+
+作成した仮想環境を有効にするコマンド（Bash シェルの場合）:
+
+[source, bash, subs="verbatim"]
+----
+source venv/Scripts/activate
+----
+
+`.gitignore`ファイルに以下の行を追加します:
+
+[source, git, subs="verbatim"]
+----
+venv/
+----
+
+パッケージをインストールします:
+
+[source, bash, subs="verbatim"]
+----
+pip install -r requirements.txt
+----
+
+requirements.txt の内容:
+
+[source, text, subs="verbatim"]
+----
+blinker==1.9.0
+click==8.1.8
+colorama==0.4.6
+Flask==3.1.0
+Flask-Cors==5.0.0
+Flask-MySQLdb==2.0.0
+itsdangerous==2.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+mysqlclient==2.2.7
+python-dotenv==1.0.1
+Werkzeug==3.1.3
+----
+
+Nuxt.js を使用して開発サーバーを起動するには、以下のコマンドを実行します:
+
+[source, bash, subs="verbatim"]
+----
+npm run dev
+----
+
+Flask アプリケーションを実行するには、以下のコマンドを実行します:
+
+[source, bash, subs="verbatim"]
+----
+python app.py
+----
 
 == 8. 付録
 
