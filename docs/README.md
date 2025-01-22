@@ -22,4 +22,5 @@ AsciiDoc 使用方法
 2.gem install asciidoctor-diagram
 3.VS Code: 拡張機能「AsciiDoc」をインストール。
 4.asciidoctor -r asciidoctor-diagram xxx.adoc
-(asciidoctor -r asciidoctor-diagram -D docs/html docs/adoc/a.adoc)
+(asciidoctor -r asciidoctor-diagram -D docs/html docs/adoc/a.adoc) docs/html 配下に a.html が作成
+(asciidoctor -r asciidoctor-diagram -o docs/html/b.html docs/adoc/a.adoc) docs/html 配下に b.html が作成
