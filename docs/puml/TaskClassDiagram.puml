@@ -93,6 +93,20 @@ package "Composables" {
   }
 }
 
+FlaskApp <|-- TaskState
+TaskState *-- Task
+useTasks --> TaskState
+useTasks --> TaskOperations
+useTaskPagination --> TaskState
+useTaskPagination --> Task
+useTaskOperations --> Task
+useTaskNotification --> Task
+useTaskEdit --> Task
+useTaskDragDrop --> Task
+useFormattedDueDate --> Task
+useTaskState --> TaskState
+@enduml
+@startuml  TaskClassDiagramTests
 package "Tests" {
   class EditModalSpec {
     + testRender(): void
@@ -141,20 +155,7 @@ package "Tests" {
     + testRender(): void
     + testCloseButton(): void
   }
-}
 
-FlaskApp <|-- TaskState
-TaskState *-- Task
-useTasks --> TaskState
-useTasks --> TaskOperations
-useTaskPagination --> TaskState
-useTaskPagination --> Task
-useTaskOperations --> Task
-useTaskNotification --> Task
-useTaskEdit --> Task
-useTaskDragDrop --> Task
-useFormattedDueDate --> Task
-useTaskState --> TaskState
 EditModalSpec --> EditModal
 PaginationSpec --> Pagination
 TaskControlsSpec --> TaskControls
