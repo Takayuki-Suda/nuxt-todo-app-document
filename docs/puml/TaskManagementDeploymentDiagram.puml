@@ -1,24 +1,32 @@
 @startuml
-node "User Device" {
+skinparam package {
+    BackgroundColor<<UserDevice>> #FFDDC1
+    BackgroundColor<<Frontend>> #D5E8D4
+    BackgroundColor<<BackendServer>> #FFEEEE
+    BackgroundColor<<DatabaseServer>> #F5F5DC
+    BorderColor black
+}
+
+node "User Device" <<UserDevice>> {
   [Web Browser]
 }
 
-node "Web Server" {
-  [Frontend Application]
+node "Frontend" <<Frontend>> {
+  [FrontendApp]
 }
 
-node "Application Server" {
+node "BackendServer" <<BackendServer>> {
   [Backend Services]
   [API Endpoints]
 }
 
-node "Database Server" {
+node "DatabaseServer" <<DatabaseServer>> {
   [Task Database]
   [User Database]
 }
 
-[Web Browser] --> [Frontend Application] : HTTP Request
-[Frontend Application] --> [Backend Services] : API Call
+[Web Browser] --> [FrontendApp] : HTTP Request
+[FrontendApp] --> [Backend Services] : API Call
 [Backend Services] --> [API Endpoints] : Data Request
 [API Endpoints] --> [Task Database] : Query
 [API Endpoints] --> [User Database] : Query
