@@ -1,19 +1,21 @@
 @startuml
-skinparam monochrome false
-skinparam componentStyle rectangle
-skinparam backgroundColor #fdfdfd
+skinparam package {
+    BackgroundColor<<Frontend>> #D5E8D4
+    BackgroundColor<<Backend>> #FFEEEE
+    BackgroundColor<<Database>> #F5F5DC
+    BorderColor black
+}
 
 ' フロントエンド
-package "Frontend (Vue, Nuxt3)" #LightBlue {
-    [TaskInput] as taskInput <<Component>> #LightGreen
-    [TaskList] as taskList <<Component>> #LightGreen
-    [Pagination] as pagination <<Component>> #LightGreen
-    [TaskDetailsModal] as detailsModal <<Component>> #LightGreen
-    [TaskControls] as taskControls <<Component>> #LightGreen
-    [EditModal] as editModal <<Component>> #LightGreen
-    [ToastNotification] as toast <<Component>> #LightGreen
-
-    [TaskManager] as taskManager <<Component>> #LightGreen
+package "Frontend (Vue, Nuxt3)" <<Frontend>> {
+    [TaskInput] as taskInput <<Component>> 
+    [TaskList] as taskList <<Component>> 
+    [Pagination] as pagination <<Component>> 
+    [TaskDetailsModal] as detailsModal <<Component>> 
+    [TaskControls] as taskControls <<Component>> 
+    [EditModal] as editModal <<Component>> 
+    [ToastNotification] as toast <<Component>> 
+    [TaskManager] as taskManager <<Component>> 
 }
 
 ' ユーザー操作
@@ -25,10 +27,10 @@ taskInput --> [Backend (Flask)] : POST /tasks
 taskList --> [Backend (Flask)] : GET /tasks
 
 ' バックエンド
-package "Backend (Flask)" #LightYellow {
-    [TaskController] as taskController <<Controller>> #LightPink
-    [TaskService] as taskService <<Service>> #LightPink
-    [Database] as database <<Storage>> #LightPink
+package "Backend (Flask)" <<Backend>> {
+    [TaskController] as taskController <<Controller>> 
+    [TaskService] as taskService <<Service>> 
+    [Database] as database <<Storage>> 
 }
 
 taskController --> taskService : Calls services
@@ -37,8 +39,8 @@ taskService --> database : Executes queries
 ' データベース
 database --> [Database (MySQL)] : Task records
 
-package "Database (MySQL)" #LightGray {
-    [Task] <<Table>> #White
+package "Database (MySQL)" <<Database>> {
+    [Task] <<Table>> 
 }
 
 ' フロントエンドフロー
