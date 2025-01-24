@@ -1,5 +1,10 @@
 @startuml
-package "Backend" {
+skinparam package {
+  BackgroundColor<<Backend>> #FFEEEE
+  BackgroundColor<<Types>> #EEFFEE
+}
+
+package "Backend" <<Backend>> {
   class FlaskApp {
     + get_tasks(): Response
     + add_task(): Response
@@ -12,8 +17,13 @@ package "Backend" {
   }
 }
 @enduml
+
 @startuml
-package "Types" {
+skinparam package {
+  BackgroundColor<<Types>> #EEFFEE
+}
+
+package "Types" <<Types>> {
   class TaskState {
     - tasks: Task[]
     - currentEditTask: Task
@@ -40,8 +50,13 @@ package "Types" {
   TaskState *-- Task
 }
 @enduml
+
 @startuml
-package "Composables" {
+skinparam package {
+  BackgroundColor<<Composables>> #EEEEFF
+}
+
+package "Composables" <<Composables>> {
   class useTasks {
     + loadTasks(): void
     + fetchTasksByDueDate(dueDate: string): void
@@ -80,18 +95,25 @@ package "Composables" {
   useTaskEdit --> useTaskDragDrop
 }
 @enduml
+
 @startuml
-package "Backend" {
+skinparam package {
+  BackgroundColor<<Backend>> #FFEEEE
+  BackgroundColor<<Types>> #EEFFEE
+  BackgroundColor<<Composables>> #EEEEFF
+}
+
+package "Backend" <<Backend>> {
   class FlaskApp
 }
 
-package "Types" {
+package "Types" <<Types>> {
   class TaskState
   class Task
   TaskState *-- Task
 }
 
-package "Composables" {
+package "Composables" <<Composables>> {
   class useTasks
   class useTaskPagination
   class useTaskOperations
@@ -108,4 +130,3 @@ useTaskNotification --> TaskState
 useTaskEdit --> TaskState
 useTaskDragDrop --> TaskState
 @enduml
-
