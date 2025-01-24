@@ -1,5 +1,11 @@
 @startuml
-package "Frontend" {
+skinparam package {
+  BackgroundColor<<Frontend>> #D5E8D4
+  BackgroundColor<<Composables>> #EEEEFF
+  BackgroundColor<<Backend>> #FFEEEE
+}
+
+package "Frontend" <<Frontend>> {
   [TaskManager] --> [TaskInput]
   [TaskManager] --> [TaskList]
   [TaskManager] --> [TaskControls]
@@ -9,7 +15,7 @@ package "Frontend" {
   [TaskList] --> [EditModal]
 }
 
-package "Composables" {
+package "Composables" <<Composables>> {
   [useTaskState] --> [TaskManager]
   [useTaskOperations] --> [TaskManager]
   [useTaskPagination] --> [TaskManager]
@@ -19,7 +25,7 @@ package "Composables" {
   [useFormattedDueDate] --> [TaskList]
 }
 
-package "Backend" {
+package "Backend" <<Backend>> {
   [FlaskApp] --> [TaskManager]
 }
 @enduml

@@ -1,23 +1,29 @@
 @startuml
 skinparam rectangle {
-    BackgroundColor #DDDDDD
+    BackgroundColor<<Frontend>> #D5E8D4
+    BackgroundColor<<Backend>> #FFEEEE
+    BorderColor black
+}
+
+skinparam database {
+    BackgroundColor #F5F5DC
     BorderColor black
 }
 
 actor User
 
-rectangle "Frontend" {
+rectangle "Frontend" <<Frontend>> {
     [TaskInput (Vue, Nuxt3)] --> [TaskController (Flask)]
     [TaskList (Vue, Nuxt3)] --> [TaskController (Flask)]
     [ToastNotification (Vue, Nuxt3)] -- [TaskInput (Vue, Nuxt3)]
 }
 
-rectangle "Backend" {
+rectangle "Backend" <<Backend>> {
     [TaskController (Flask)] --> [TaskService (Flask)]
     [TaskService (Flask)] --> [TaskTable (MySQL)]
 }
 
-database "Database" {
+database "Database" <<Database>> {
     [TaskTable (MySQL)]
 }
 
