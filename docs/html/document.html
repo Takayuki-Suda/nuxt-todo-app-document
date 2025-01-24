@@ -2029,535 +2029,541 @@
     </div>
     <div id="content">
       <div class="sect1">
-        <h2 id="_1_概要">1. 概要</h2>
+        <h2 id="_要件定義_requirement_definition">
+          要件定義 (Requirement Definition)
+        </h2>
         <div class="sectionbody">
           <div class="sect2">
-            <h3 id="_1_1_タスク一覧画面">1.1 タスク一覧画面</h3>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../sample/frontend/images/task_list.png"
-                  alt="タスク一覧画面"
-                />
+            <h3 id="_1_概要">1. 概要</h3>
+            <div class="sect3">
+              <h4 id="_1_1_タスク一覧画面">1.1 タスク一覧画面</h4>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../sample/frontend/images/task_list.png"
+                    alt="タスク一覧画面"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_1_2_イントロダクション">1.2 イントロダクション</h3>
-            <div class="paragraph">
-              <p>
-                このドキュメントは、Nuxt.js
-                を使用したタスク管理アプリケーションの設計書です。アプリケーションの構成、使用技術、動作フローについて詳細に説明します。
-              </p>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_1_3_目的">1.3 目的</h3>
-            <div class="paragraph">
-              <p>
-                このドキュメントの目的は、プロジェクトの開発者がアプリケーションの設計と実装について統一された理解を持つことを助けることです。
-              </p>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_1_4_範囲">1.4 範囲</h3>
-            <div class="paragraph">
-              <p>
-                この設計書は、フロントエンドおよびバックエンドの主要なコンポーネント、データモデル、使用技術、開発およびテストの設定を網羅します。
-              </p>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_1_5_定義">1.5 定義</h3>
-            <div class="paragraph">
-              <p>
-                このセクションでは、このドキュメントで使用される主要な用語と概念を簡潔に記述します。
-              </p>
-            </div>
-            <div class="ulist">
-              <ul>
-                <li>
-                  <p>
-                    <strong>タスク管理</strong>:
-                    タスクの作成、編集、削除、完了などの操作を指します。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>フロントエンド</strong>:
-                    ユーザーが直接操作する部分。Vue.js と Nuxt.js を使用。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>バックエンド</strong>:
-                    サーバーサイドのロジックとデータ管理を担当する部分。Flask と
-                    MySQL を使用。
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_2_アーキテクチャ">2. アーキテクチャ</h2>
-        <div class="sectionbody">
-          <div class="sect2">
-            <h3 id="_2_1_アーキテクチャ図">2.1 アーキテクチャ図</h3>
-            <div class="paragraph">
-              <p>
-                アーキテクチャ図はアプリケーション全体の構成を視覚的に示します。各コンポーネント間の関係とデータフローが明確にわかります。
-                以下にアプリケーションの全体アーキテクチャ図を提供し、各コンポーネントの関係を示します。
-              </p>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskManagementArchitectureDiagram.png"
-                  alt="アーキテクチャ図"
-                />
+            <div class="sect3">
+              <h4 id="_1_2_イントロダクション">1.2 イントロダクション</h4>
+              <div class="paragraph">
+                <p>
+                  このドキュメントは、Nuxt.js
+                  を使用したタスク管理アプリケーションの設計書です。アプリケーションの構成、使用技術、動作フローについて詳細に説明します。
+                </p>
               </div>
             </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/SystemArchitectureDiagram.png"
-                  alt="システムアーキテクチャ図"
-                />
+            <div class="sect3">
+              <h4 id="_1_3_目的">1.3 目的</h4>
+              <div class="paragraph">
+                <p>
+                  このドキュメントの目的は、プロジェクトの開発者がアプリケーションの設計と実装について統一された理解を持つことを助けることです。
+                </p>
               </div>
             </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_2_2_コンポーネント説明">2.2 コンポーネント説明</h3>
-            <div class="paragraph">
-              <p>各コンポーネントの詳細な説明を提供します。</p>
+            <div class="sect3">
+              <h4 id="_1_4_範囲">1.4 範囲</h4>
+              <div class="paragraph">
+                <p>
+                  この設計書は、フロントエンドおよびバックエンドの主要なコンポーネント、データモデル、使用技術、開発およびテストの設定を網羅します。
+                </p>
+              </div>
             </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskComponentDiagram.png"
-                  alt="コンポーネント図"
-                />
+            <div class="sect3">
+              <h4 id="_1_5_定義">1.5 定義</h4>
+              <div class="paragraph">
+                <p>
+                  このセクションでは、このドキュメントで使用される主要な用語と概念を簡潔に記述します。
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      <strong>タスク管理</strong>:
+                      タスクの作成、編集、削除、完了などの操作を指します。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>フロントエンド</strong>:
+                      ユーザーが直接操作する部分。Vue.js と Nuxt.js を使用。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>バックエンド</strong>:
+                      サーバーサイドのロジックとデータ管理を担当する部分。Flask
+                      と MySQL を使用。
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="sect1">
-        <h2 id="_3_状態遷移図と状態説明">3. 状態遷移図と状態説明</h2>
+        <h2 id="_基本設計_basic_design">基本設計 (Basic Design)</h2>
         <div class="sectionbody">
           <div class="sect2">
-            <h3 id="_3_1_状態遷移図">3.1 状態遷移図</h3>
-            <div class="paragraph">
-              <p>ユーザーの操作に応じた状態遷移図を提供します。</p>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskStateTransitionDiagram.png"
-                  alt="状態遷移図"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_3_2_状態説明">3.2 状態説明</h3>
-            <div class="paragraph">
-              <p>各状態の詳細な説明を提供します。</p>
-            </div>
-            <div class="paragraph">
-              <p>状態遷移図に基づいて、各状態の詳細を以下に説明します：</p>
-            </div>
-            <div class="olist arabic">
-              <ol class="arabic">
-                <li>
-                  <p>
-                    <strong>初期状態</strong>:
-                    アプリケーションが初期化された状態。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>ログイン状態</strong>:
-                    ユーザーがログインしている状態。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>タスク表示状態</strong>:
-                    ユーザーがタスクを表示している状態。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>タスク編集状態</strong>:
-                    ユーザーがタスクを編集している状態。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>タスク完了状態</strong>:
-                    ユーザーがタスクを完了させた状態。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>ログアウト状態</strong>:
-                    ユーザーがログアウトしている状態。
-                  </p>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_4_フローチャート">4. フローチャート</h2>
-        <div class="sectionbody">
-          <div class="sect2">
-            <h3 id="_4_1_全体のフローチャート">4.1 全体のフローチャート</h3>
-            <div class="paragraph">
-              <p>
-                以下のフローチャートは、アプリケーション全体の主要な操作フローを示しています。ユーザーの操作に基づくシステムの挙動が一目でわかります。
-                これにより、設計書がさらにわかりやすくなり、他の開発者にも理解しやすくなります。
-              </p>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskManagementFlowchart.png"
-                  alt="タスク管理フローチャート"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/DetailedInteractionDiagram.png"
-                  alt="詳細なインタラクション図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/SimpleInteractionDiagram.png"
-                  alt="シンプルなインタラクション図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskManagementDeploymentDiagram.png"
-                  alt="タスク管理デプロイメント図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskManagementPackageDiagram.png"
-                  alt="パッケージ図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskManagementUseCaseDiagram.png"
-                  alt="ユースケース図"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_4_2_フロントエンドフローチャート">
-              4.2 フロントエンドフローチャート
-            </h3>
-            <div class="paragraph">
-              <p>
-                フロントエンドの具体的な操作フローを示すフローチャートです。
-              </p>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/FrontendTaskFlowchart.png"
-                  alt="フロントエンドタスクフロー"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TaskAddSequenceDiagram.png"
-                  alt="タスク追加シーケンス図"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_4_3_バックエンドクラス図">4.3 バックエンドクラス図</h3>
-            <div class="paragraph">
-              <p>バックエンドのクラス構造を示す図です。</p>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/BackendClassDiagram.png"
-                  alt="バックエンドクラス図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TypesClassDiagram.png"
-                  alt="タスクデータモデル図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/ComposablesClassDiagram.png"
-                  alt="Composableクラス図"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/OverallSimplifiedDiagram.png"
-                  alt="全体簡略図"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_4_4_テストクラス図">4.4 テストクラス図</h3>
-            <div class="paragraph">
-              <p>各テストのクラス図を示します。</p>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TestsUIComponents.png"
-                  alt="テストUIコンポーネント"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img src="../images/TestsLogic.png" alt="テストロジック" />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img
-                  src="../images/TestsListsAndInput.png"
-                  alt="テストリストと入力"
-                />
-              </div>
-            </div>
-            <div class="imageblock">
-              <div class="content">
-                <img src="../images/TestsOverall.png" alt="テスト全体" />
-              </div>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_4_5_詳細なプロセス説明">4.5 詳細なプロセス説明</h3>
-            <div class="paragraph">
-              <p>
-                このセクションでは、各プロセスのステップバイステップの詳細な説明を提供します。
-              </p>
-            </div>
+            <h3 id="_2_アーキテクチャ">2. アーキテクチャ</h3>
             <div class="sect3">
-              <h4 id="_4_5_1_タスクの作成">4.5.1 タスクの作成</h4>
-              <div class="olist arabic">
-                <ol class="arabic">
-                  <li>
-                    <p><strong>タスクの作成ボタンをクリック</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            ユーザーはタスク一覧画面で「新しいタスクを作成」ボタンをクリックします。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <p><strong>タスク作成フォームの表示</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            新しいタスク作成フォームが表示されます。ユーザーはタスク名、説明、期限などの情報を入力します。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <p><strong>タスクの保存</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            フォームの「保存」ボタンをクリックすると、入力された情報がサーバーに送信され、新しいタスクがデータベースに保存されます。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <p><strong>タスク一覧へのリダイレクト</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            タスクの保存が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、新しいタスクが一覧に表示されます。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ol>
+              <h4 id="_2_1_アーキテクチャ図">2.1 アーキテクチャ図</h4>
+              <div class="paragraph">
+                <p>
+                  アーキテクチャ図はアプリケーション全体の構成を視覚的に示します。各コンポーネント間の関係とデータフローが明確にわかります。
+                  以下にアプリケーションの全体アーキテクチャ図を提供し、各コンポーネントの関係を示します。
+                </p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementArchitectureDiagram.png"
+                    alt="アーキテクチャ図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/SystemArchitectureDiagram.png"
+                    alt="システムアーキテクチャ図"
+                  />
+                </div>
               </div>
             </div>
             <div class="sect3">
-              <h4 id="_4_5_2_タスクの編集">4.5.2 タスクの編集</h4>
-              <div class="olist arabic">
-                <ol class="arabic">
-                  <li>
-                    <p><strong>タスクの選択</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            ユーザーは編集したいタスクをタスク一覧から選択します。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <p><strong>タスク編集フォームの表示</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            選択したタスクの編集フォームが表示され、ユーザーはタスク名、説明、期限などの情報を編集します。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <p><strong>編集内容の保存</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            フォームの「保存」ボタンをクリックすると、編集された情報がサーバーに送信され、タスクが更新されます。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <p><strong>タスク一覧へのリダイレクト</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            タスクの編集が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、更新されたタスクが一覧に表示されます。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ol>
+              <h4 id="_2_2_コンポーネント説明">2.2 コンポーネント説明</h4>
+              <div class="paragraph">
+                <p>各コンポーネントの詳細な説明を提供します。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskComponentDiagram.png"
+                    alt="コンポーネント図"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_3_状態遷移図と状態説明">3. 状態遷移図と状態説明</h3>
+            <div class="sect3">
+              <h4 id="_3_1_状態遷移図">3.1 状態遷移図</h4>
+              <div class="paragraph">
+                <p>ユーザーの操作に応じた状態遷移図を提供します。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskStateTransitionDiagram.png"
+                    alt="状態遷移図"
+                  />
+                </div>
               </div>
             </div>
             <div class="sect3">
-              <h4 id="_4_5_3_タスクの削除">4.5.3 タスクの削除</h4>
+              <h4 id="_3_2_状態説明">3.2 状態説明</h4>
+              <div class="paragraph">
+                <p>各状態の詳細な説明を提供します。</p>
+              </div>
+              <div class="paragraph">
+                <p>状態遷移図に基づいて、各状態の詳細を以下に説明します：</p>
+              </div>
               <div class="olist arabic">
                 <ol class="arabic">
                   <li>
-                    <p><strong>タスクの選択</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            ユーザーは削除したいタスクをタスク一覧から選択します。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
+                    <p>
+                      <strong>初期状態</strong>:
+                      アプリケーションが初期化された状態。
+                    </p>
                   </li>
                   <li>
-                    <p><strong>削除確認ダイアログの表示</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            タスク削除確認ダイアログが表示され、ユーザーは削除の意図を確認します。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
+                    <p>
+                      <strong>ログイン状態</strong>:
+                      ユーザーがログインしている状態。
+                    </p>
                   </li>
                   <li>
-                    <p><strong>タスクの削除</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            ユーザーが「削除」ボタンをクリックすると、タスクがサーバーから削除され、データベースからも削除されます。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
+                    <p>
+                      <strong>タスク表示状態</strong>:
+                      ユーザーがタスクを表示している状態。
+                    </p>
                   </li>
                   <li>
-                    <p><strong>タスク一覧の更新</strong>:</p>
-                    <div class="ulist">
-                      <ul>
-                        <li>
-                          <p>
-                            タスクの削除が成功すると、タスク一覧が更新され、削除されたタスクが一覧から消えます。
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
+                    <p>
+                      <strong>タスク編集状態</strong>:
+                      ユーザーがタスクを編集している状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>タスク完了状態</strong>:
+                      ユーザーがタスクを完了させた状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>ログアウト状態</strong>:
+                      ユーザーがログアウトしている状態。
+                    </p>
                   </li>
                 </ol>
               </div>
             </div>
           </div>
+          <div class="sect2">
+            <h3 id="_4_フローチャート">4. フローチャート</h3>
+            <div class="sect3">
+              <h4 id="_4_1_全体のフローチャート">4.1 全体のフローチャート</h4>
+              <div class="paragraph">
+                <p>
+                  以下のフローチャートは、アプリケーション全体の主要な操作フローを示しています。ユーザーの操作に基づくシステムの挙動が一目でわかります。
+                  これにより、設計書がさらにわかりやすくなり、他の開発者にも理解しやすくなります。
+                </p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementFlowchart.png"
+                    alt="タスク管理フローチャート"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/DetailedInteractionDiagram.png"
+                    alt="詳細なインタラクション図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/SimpleInteractionDiagram.png"
+                    alt="シンプルなインタラクション図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementDeploymentDiagram.png"
+                    alt="タスク管理デプロイメント図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementPackageDiagram.png"
+                    alt="パッケージ図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementUseCaseDiagram.png"
+                    alt="ユースケース図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_2_フロントエンドフローチャート">
+                4.2 フロントエンドフローチャート
+              </h4>
+              <div class="paragraph">
+                <p>
+                  フロントエンドの具体的な操作フローを示すフローチャートです。
+                </p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/FrontendTaskFlowchart.png"
+                    alt="フロントエンドタスクフロー"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskAddSequenceDiagram.png"
+                    alt="タスク追加シーケンス図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_3_バックエンドクラス図">4.3 バックエンドクラス図</h4>
+              <div class="paragraph">
+                <p>バックエンドのクラス構造を示す図です。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/BackendClassDiagram.png"
+                    alt="バックエンドクラス図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TypesClassDiagram.png"
+                    alt="タスクデータモデル図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/ComposablesClassDiagram.png"
+                    alt="Composableクラス図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/OverallSimplifiedDiagram.png"
+                    alt="全体簡略図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_4_テストクラス図">4.4 テストクラス図</h4>
+              <div class="paragraph">
+                <p>各テストのクラス図を示します。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TestsUIComponents.png"
+                    alt="テストUIコンポーネント"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img src="../images/TestsLogic.png" alt="テストロジック" />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TestsListsAndInput.png"
+                    alt="テストリストと入力"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img src="../images/TestsOverall.png" alt="テスト全体" />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_5_詳細なプロセス説明">4.5 詳細なプロセス説明</h4>
+              <div class="paragraph">
+                <p>
+                  このセクションでは、各プロセスのステップバイステップの詳細な説明を提供します。
+                </p>
+              </div>
+              <div class="sect4">
+                <h5 id="_4_5_1_タスクの作成">4.5.1 タスクの作成</h5>
+                <div class="olist arabic">
+                  <ol class="arabic">
+                    <li>
+                      <p><strong>タスクの作成ボタンをクリック</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーはタスク一覧画面で「新しいタスクを作成」ボタンをクリックします。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク作成フォームの表示</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              新しいタスク作成フォームが表示されます。ユーザーはタスク名、説明、期限などの情報を入力します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスクの保存</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              フォームの「保存」ボタンをクリックすると、入力された情報がサーバーに送信され、新しいタスクがデータベースに保存されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク一覧へのリダイレクト</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスクの保存が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、新しいタスクが一覧に表示されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="sect4">
+                <h5 id="_4_5_2_タスクの編集">4.5.2 タスクの編集</h5>
+                <div class="olist arabic">
+                  <ol class="arabic">
+                    <li>
+                      <p><strong>タスクの選択</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーは編集したいタスクをタスク一覧から選択します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク編集フォームの表示</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              選択したタスクの編集フォームが表示され、ユーザーはタスク名、説明、期限などの情報を編集します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>編集内容の保存</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              フォームの「保存」ボタンをクリックすると、編集された情報がサーバーに送信され、タスクが更新されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク一覧へのリダイレクト</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスクの編集が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、更新されたタスクが一覧に表示されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="sect4">
+                <h5 id="_4_5_3_タスクの削除">4.5.3 タスクの削除</h5>
+                <div class="olist arabic">
+                  <ol class="arabic">
+                    <li>
+                      <p><strong>タスクの選択</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーは削除したいタスクをタスク一覧から選択します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>削除確認ダイアログの表示</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスク削除確認ダイアログが表示され、ユーザーは削除の意図を確認します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスクの削除</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーが「削除」ボタンをクリックすると、タスクがサーバーから削除され、データベースからも削除されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク一覧の更新</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスクの削除が成功すると、タスク一覧が更新され、削除されたタスクが一覧から消えます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="sect1">
-        <h2 id="_5_データモデル">5. データモデル</h2>
+        <h2 id="_詳細設計_detailed_design">詳細設計 (Detailed Design)</h2>
         <div class="sectionbody">
           <div class="sect2">
-            <h3 id="_5_1_データベース構造">5.1 データベース構造</h3>
-            <div class="paragraph">
-              <p>
-                データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています:
-              </p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-database" data-lang="database">CREATE DATABASE task_db;
+            <h3 id="_5_データモデル">5. データモデル</h3>
+            <div class="sect3">
+              <h4 id="_5_1_データベース構造">5.1 データベース構造</h4>
+              <div class="paragraph">
+                <p>
+                  データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています:
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-database" data-lang="database">CREATE DATABASE task_db;
 
 USE task_db;
 
@@ -2568,28 +2574,29 @@ CREATE TABLE tasks (
     dueDate DATETIME NOT NULL
 );
 ALTER TABLE tasks CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
+                </div>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>
-                このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます:
-              </p>
-            </div>
-            <div class="ulist">
-              <ul>
-                <li>
-                  <p>id: 一意の識別子（自動増分、主キー）</p>
-                </li>
-                <li>
-                  <p>text: タスクの内容</p>
-                </li>
-                <li>
-                  <p>completed: タスクの完了状態（デフォルトは FALSE）</p>
-                </li>
-                <li>
-                  <p>dueDate: タスクの期限日</p>
-                </li>
-              </ul>
+              <div class="paragraph">
+                <p>
+                  このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます:
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>id: 一意の識別子（自動増分、主キー）</p>
+                  </li>
+                  <li>
+                    <p>text: タスクの内容</p>
+                  </li>
+                  <li>
+                    <p>completed: タスクの完了状態（デフォルトは FALSE）</p>
+                  </li>
+                  <li>
+                    <p>dueDate: タスクの期限日</p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="sect2">
@@ -2603,40 +2610,37 @@ ALTER TABLE tasks CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_6_サンプルコード">6. サンプルコード</h2>
-        <div class="sectionbody">
           <div class="sect2">
-            <h3 id="_6_1_フロントエンドコード">6.1 フロントエンドコード</h3>
-            <div class="paragraph">
-              <p>フロントエンドの主要なコード例を提供します。</p>
-            </div>
+            <h3 id="_6_サンプルコード">6. サンプルコード</h3>
             <div class="sect3">
-              <h4 id="_6_1_1_フロントエンドの初期化">
-                6.1.1 フロントエンドの初期化
-              </h4>
+              <h4 id="_6_1_フロントエンドコード">6.1 フロントエンドコード</h4>
               <div class="paragraph">
-                <p>Nuxt プロジェクトを初期化します。</p>
+                <p>フロントエンドの主要なコード例を提供します。</p>
               </div>
-              <div class="listingblock">
-                <div class="content">
-                  <pre
-                    class="highlight"
-                  ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
+              <div class="sect4">
+                <h5 id="_6_1_1_フロントエンドの初期化">
+                  6.1.1 フロントエンドの初期化
+                </h5>
+                <div class="paragraph">
+                  <p>Nuxt プロジェクトを初期化します。</p>
+                </div>
+                <div class="listingblock">
+                  <div class="content">
+                    <pre
+                      class="highlight"
+                    ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="sect3">
-              <h4 id="_6_1_2_フロントエンドのコード例">
-                6.1.2 フロントエンドのコード例
-              </h4>
-              <div class="listingblock">
-                <div class="content">
-                  <pre
-                    class="highlight"
-                  ><code class="language-vue" data-lang="vue">&lt;template&gt;
+              <div class="sect4">
+                <h5 id="_6_1_2_フロントエンドのコード例">
+                  6.1.2 フロントエンドのコード例
+                </h5>
+                <div class="listingblock">
+                  <div class="content">
+                    <pre
+                      class="highlight"
+                    ><code class="language-vue" data-lang="vue">&lt;template&gt;
   &lt;div&gt;
     &lt;h1&gt;タスク一覧&lt;/h1&gt;
     &lt;ul&gt;
@@ -2681,17 +2685,18 @@ button {
   margin-left: 10px;
 }
 &lt;/style&gt;</code></pre>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="sect3">
-              <h4 id="_6_1_3_フロントエンドデザイン">
-                6.1.3 フロントエンドデザイン
-              </h4>
-              <div class="paragraph">
-                <p>
-                  このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
-                </p>
+              <div class="sect4">
+                <h5 id="_6_1_3_フロントエンドデザイン">
+                  6.1.3 フロントエンドデザイン
+                </h5>
+                <div class="paragraph">
+                  <p>
+                    このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
+                  </p>
+                </div>
               </div>
             </div>
             <div class="sect3">
@@ -2738,17 +2743,16 @@ button {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_6_2_バックエンドコード">6.2 バックエンドコード</h3>
-            <div class="paragraph">
-              <p>サーバサイドのサンプルコードを提供します。</p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-python" data-lang="python">from flask import Flask, request, jsonify
+            <div class="sect3">
+              <h4 id="_6_2_バックエンドコード">6.2 バックエンドコード</h4>
+              <div class="paragraph">
+                <p>サーバサイドのサンプルコードを提供します。</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-python" data-lang="python">from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -2788,306 +2792,329 @@ def complete_task(id):
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)</code></pre>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_7_使用技術の詳細">7. 使用技術の詳細</h2>
-        <div class="sectionbody">
           <div class="sect2">
-            <h3 id="_7_1_フロントエンド技術">7.1 フロントエンド技術</h3>
-            <div class="olist arabic">
-              <ol class="arabic">
-                <li>
-                  <p><strong>Vue.js</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: Vue.js
-                          は、インタラクティブなユーザーインターフェースを構築するための
-                          JavaScript フレームワークです。
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <strong>特徴</strong>:
-                          コンポーネントベースのアーキテクチャ、双方向データバインディング、仮想
-                          DOM など。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>latest</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <p><strong>Nuxt3</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: Nuxt.js は、Vue.js
-                          の拡張フレームワークで、サーバーサイドレンダリング（SSR）や静的サイト生成（SSG）をサポートします。
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <strong>特徴</strong>:
-                          ルーティングやデータフェッチの簡略化、豊富なモジュールエコシステム。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^3.15.1</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <p><strong>Vue Toastification</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>:
-                          ユーザーに非侵入的な通知を提供するためのライブラリ。
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <strong>特徴</strong>:
-                          シンプルでカスタマイズ可能なトースト通知。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^2.1.2</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_7_2_バックエンド技術">7.2 バックエンド技術</h3>
-            <div class="olist arabic">
-              <ol class="arabic">
-                <li>
-                  <p><strong>Flask</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: Flask は、Python の軽量な Web
-                          フレームワークです。RESTful API を迅速に構築できます。
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <strong>特徴</strong>:
-                          軽量、柔軟、豊富な拡張機能を持つ。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^2.2.2</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <p><strong>MySQL</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: MySQL
-                          は、リレーショナルデータベース管理システムです。
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <strong>特徴</strong>:
-                          高性能、大規模なデータを扱う能力、広範なサポート。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^8.0.26</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_7_3_その他のユーティリティ">7.3 その他のユーティリティ</h3>
-            <div class="olist arabic">
-              <ol class="arabic">
-                <li>
-                  <p><strong>Axios</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: HTTP
-                          クライアントライブラリで、API
-                          リクエストを簡単に行うために使用されます。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^1.7.9</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <p><strong>Bootstrap</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: CSS
-                          フレームワークで、レスポンシブデザインとスタイリングを実現します。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^5.3.3</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_7_4_テストツール">7.4 テストツール</h3>
-            <div class="olist arabic">
-              <ol class="arabic">
-                <li>
-                  <p><strong>Vitest</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>:
-                          高速なテストランナーで、ユニットテストと統合テストを実行するために使用されます。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^2.1.8</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <p><strong>@nuxt/test-utils</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: Nuxt.js
-                          アプリケーションのテストを簡単に行うためのユーティリティ。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^3.15.1</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <p><strong>TypeScript</strong></p>
-                  <div class="ulist">
-                    <ul>
-                      <li>
-                        <p>
-                          <strong>説明</strong>: 型安全な JavaScript
-                          で、コードの品質と保守性を向上させます。
-                        </p>
-                      </li>
-                      <li>
-                        <p><strong>バージョン</strong>: <code>^5.7.2</code></p>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_7_5_環境変数の設定">7.5 環境変数の設定</h3>
-            <div class="listingblock">
-              <div class="title">
-                env ファイルを作成し、以下の内容を記入します:
+            <h3 id="_7_使用技術の詳細">7. 使用技術の詳細</h3>
+            <div class="sect3">
+              <h4 id="_7_1_フロントエンド技術">7.1 フロントエンド技術</h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Vue.js</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Vue.js
+                            は、インタラクティブなユーザーインターフェースを構築するための
+                            JavaScript フレームワークです。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            コンポーネントベースのアーキテクチャ、双方向データバインディング、仮想
+                            DOM など。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>latest</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>Nuxt3</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Nuxt.js は、Vue.js
+                            の拡張フレームワークで、サーバーサイドレンダリング（SSR）や静的サイト生成（SSG）をサポートします。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            ルーティングやデータフェッチの簡略化、豊富なモジュールエコシステム。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^3.15.1</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>Vue Toastification</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>:
+                            ユーザーに非侵入的な通知を提供するためのライブラリ。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            シンプルでカスタマイズ可能なトースト通知。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^2.1.2</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
               </div>
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-env" data-lang="env">MYSQL_HOST=localhost
+            </div>
+            <div class="sect3">
+              <h4 id="_7_2_バックエンド技術">7.2 バックエンド技術</h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Flask</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Flask は、Python の軽量な Web
+                            フレームワークです。RESTful API
+                            を迅速に構築できます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            軽量、柔軟、豊富な拡張機能を持つ。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^2.2.2</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>MySQL</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: MySQL
+                            は、リレーショナルデータベース管理システムです。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            高性能、大規模なデータを扱う能力、広範なサポート。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^8.0.26</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_3_その他のユーティリティ">
+                7.3 その他のユーティリティ
+              </h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Axios</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: HTTP
+                            クライアントライブラリで、API
+                            リクエストを簡単に行うために使用されます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^1.7.9</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>Bootstrap</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: CSS
+                            フレームワークで、レスポンシブデザインとスタイリングを実現します。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^5.3.3</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_4_テストツール">7.4 テストツール</h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Vitest</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>:
+                            高速なテストランナーで、ユニットテストと統合テストを実行するために使用されます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^2.1.8</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>@nuxt/test-utils</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Nuxt.js
+                            アプリケーションのテストを簡単に行うためのユーティリティ。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^3.15.1</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>TypeScript</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: 型安全な JavaScript
+                            で、コードの品質と保守性を向上させます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^5.7.2</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_5_環境変数の設定">7.5 環境変数の設定</h4>
+              <div class="listingblock">
+                <div class="title">
+                  env ファイルを作成し、以下の内容を記入します:
+                </div>
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-env" data-lang="env">MYSQL_HOST=localhost
 MYSQL_USER=root
 MYSQL_PASSWORD=root123!
 MYSQL_DB=task_db
 MYSQL_CURSORCLASS=DictCursor</code></pre>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="sect2">
-            <h3 id="_7_6_仮想環境の作成と依存関係の設定">
-              7.6 仮想環境の作成と依存関係の設定
-            </h3>
-            <div class="paragraph">
-              <p>
-                依存関係を隔離することで競合を防ぐため、仮想環境を作成します。
-              </p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-bash" data-lang="bash">python -m venv venv</code></pre>
+            <div class="sect3">
+              <h4 id="_7_6_仮想環境の作成と依存関係の設定">
+                7.6 仮想環境の作成と依存関係の設定
+              </h4>
+              <div class="paragraph">
+                <p>
+                  依存関係を隔離することで競合を防ぐため、仮想環境を作成します。
+                </p>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>作成した仮想環境を有効にするコマンド（Bash シェルの場合）:</p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-bash" data-lang="bash">source venv/Scripts/activate</code></pre>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">python -m venv venv</code></pre>
+                </div>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>`.gitignore`ファイルに以下の行を追加します:</p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-git" data-lang="git">venv/</code></pre>
+              <div class="paragraph">
+                <p>
+                  作成した仮想環境を有効にするコマンド（Bash シェルの場合）:
+                </p>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>パッケージをインストールします:</p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-bash" data-lang="bash">pip install -r requirements.txt</code></pre>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">source venv/Scripts/activate</code></pre>
+                </div>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>requirements.txt の内容:</p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-text" data-lang="text">blinker==1.9.0
+              <div class="paragraph">
+                <p>`.gitignore`ファイルに以下の行を追加します:</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-git" data-lang="git">venv/</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>パッケージをインストールします:</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">pip install -r requirements.txt</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>requirements.txt の内容:</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-text" data-lang="text">blinker==1.9.0
 click==8.1.8
 colorama==0.4.6
 Flask==3.1.0
@@ -3099,136 +3126,135 @@ MarkupSafe==3.0.2
 mysqlclient==2.2.7
 python-dotenv==1.0.1
 Werkzeug==3.1.3</code></pre>
+                </div>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>
-                Nuxt.js
-                を使用して開発サーバーを起動するには、以下のコマンドを実行します:
-              </p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-bash" data-lang="bash">npm run dev</code></pre>
+              <div class="paragraph">
+                <p>
+                  Nuxt.js
+                  を使用して開発サーバーを起動するには、以下のコマンドを実行します:
+                </p>
               </div>
-            </div>
-            <div class="paragraph">
-              <p>
-                Flask
-                アプリケーションを実行するには、以下のコマンドを実行します:
-              </p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-bash" data-lang="bash">python app.py</code></pre>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">npm run dev</code></pre>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_8_付録">8. 付録</h2>
-        <div class="sectionbody">
-          <div class="sect2">
-            <h3 id="_8_1_用語集">8.1 用語集</h3>
-            <div class="paragraph">
-              <p>
-                このセクションでは、プロジェクトで使用される専門用語や略語の定義を記述します。
-              </p>
-            </div>
-            <div class="ulist">
-              <ul>
-                <li>
-                  <p>
-                    SSR (サーバーサイドレンダリング):
-                    サーバー側でコンテンツをレンダリングし、クライアントに送信する技術。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    SSG (静的サイト生成): 事前に静的な HTML
-                    ページを生成し、サーバーに配置する技術。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    CRUD: Create, Read, Update, Delete
-                    の略で、データベース操作の基本的な操作を指す。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    API (アプリケーションプログラミングインターフェイス):
-                    アプリケーション同士が通信するためのインターフェース。タスクデータの取得や更新に使用。
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    DOM: Document Object Model の略で、HTML や XML
-                    文書をプログラムから操作するための仕組み。
-                  </p>
-                </li>
-              </ul>
+              <div class="paragraph">
+                <p>
+                  Flask
+                  アプリケーションを実行するには、以下のコマンドを実行します:
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">python app.py</code></pre>
+                </div>
+              </div>
             </div>
           </div>
           <div class="sect2">
-            <h3 id="_8_2_参考資料">8.2 参考資料</h3>
-            <div class="paragraph">
-              <p>
-                プロジェクトの設計や実装に参考にした書籍、論文、ウェブサイトなどの資料を一覧化します。
-              </p>
+            <h3 id="_8_付録">8. 付録</h3>
+            <div class="sect3">
+              <h4 id="_8_1_用語集">8.1 用語集</h4>
+              <div class="paragraph">
+                <p>
+                  このセクションでは、プロジェクトで使用される専門用語や略語の定義を記述します。
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      SSR (サーバーサイドレンダリング):
+                      サーバー側でコンテンツをレンダリングし、クライアントに送信する技術。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      SSG (静的サイト生成): 事前に静的な HTML
+                      ページを生成し、サーバーに配置する技術。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      CRUD: Create, Read, Update, Delete
+                      の略で、データベース操作の基本的な操作を指す。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      API (アプリケーションプログラミングインターフェイス):
+                      アプリケーション同士が通信するためのインターフェース。タスクデータの取得や更新に使用。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      DOM: Document Object Model の略で、HTML や XML
+                      文書をプログラムから操作するための仕組み。
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="ulist">
-              <ul>
-                <li>
-                  <p>
-                    <a href="https://nuxt.com/docs">Nuxt.js 公式ドキュメント</a>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <a href="https://vuejs.org/guide/introduction.html"
-                      >Vue.js 公式ガイド</a
-                    >
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <a href="https://flask.palletsprojects.com/en/latest/"
-                      >Flask 公式ドキュメント</a
-                    >
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <a href="https://dev.mysql.com/doc/"
-                      >MySQL 公式ドキュメント</a
-                    >
-                  </p>
-                </li>
-              </ul>
+            <div class="sect3">
+              <h4 id="_8_2_参考資料">8.2 参考資料</h4>
+              <div class="paragraph">
+                <p>
+                  プロジェクトの設計や実装に参考にした書籍、論文、ウェブサイトなどの資料を一覧化します。
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      <a href="https://nuxt.com/docs"
+                        >Nuxt.js 公式ドキュメント</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="https://vuejs.org/guide/introduction.html"
+                        >Vue.js 公式ガイド</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="https://flask.palletsprojects.com/en/latest/"
+                        >Flask 公式ドキュメント</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="https://dev.mysql.com/doc/"
+                        >MySQL 公式ドキュメント</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="sect1">
-        <h2 id="_9_結論">9. 結論</h2>
-        <div class="sectionbody">
-          <div class="paragraph">
-            <p>
-              このドキュメントでは、タスク管理アプリケーションの設計、使用技術、動作フロー、テスト手法、デプロイメントの手順について詳細に説明しました。本アプリケーションは、ユーザーにとって直感的に使いやすいインターフェースと、効率的なタスク管理機能を提供します。今後の改善点としては、UI
-              のさらなる改善や、新しい機能の追加が考えられます。
-            </p>
+          <div class="sect2">
+            <h3 id="_9_結論">9. 結論</h3>
+            <div class="paragraph">
+              <p>
+                このドキュメントでは、タスク管理アプリケーションの設計、使用技術、動作フロー、テスト手法、デプロイメントの手順について詳細に説明しました。本アプリケーションは、ユーザーにとって直感的に使いやすいインターフェースと、効率的なタスク管理機能を提供します。今後の改善点としては、UI
+                のさらなる改善や、新しい機能の追加が考えられます。
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div id="footer">
-      <div id="footer-text">Last updated 2025-01-24 09:33:28 +0900</div>
+      <div id="footer-text">Last updated 2025-01-24 16:22:48 +0900</div>
     </div>
   </body>
 </html>
