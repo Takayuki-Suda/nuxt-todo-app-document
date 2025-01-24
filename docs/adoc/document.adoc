@@ -85,14 +85,30 @@ image::../images/TaskManagementUseCaseDiagram.png[ユースケース図]
 
 image::../images/FrontendTaskFlowchart.png[フロントエンドタスクフロー]
 image::../images/TaskAddSequenceDiagram.png[タスク追加シーケンス図]
-image::../images/TaskClassDiagram.png[タスククラス図]
-image::../images/TaskClassDiagramTests.png[タスククラス図]
 
-=== 4.3 詳細なプロセス説明
+=== 4.3 バックエンドクラス図
+
+バックエンドのクラス構造を示す図です。
+
+image::../images/BackendClassDiagram.png[バックエンドクラス図]
+image::../images/TypesClassDiagram.png[タスクデータモデル図]
+image::../images/ComposablesClassDiagram.png[Composableクラス図]
+image::../images/OverallSimplifiedDiagram.png[全体簡略図]
+
+=== 4.4 テストクラス図
+
+各テストのクラス図を示します。
+
+image::../images/TestsUIComponents.png[テストUIコンポーネント]
+image::../images/TestsLogic.png[テストロジック]
+image::../images/TestsListsAndInput.png[テストリストと入力]
+image::../images/TestsOverall.png[テスト全体]
+
+=== 4.5 詳細なプロセス説明
 
 このセクションでは、各プロセスのステップバイステップの詳細な説明を提供します。
 
-==== 4.3.1 タスクの作成
+==== 4.5.1 タスクの作成
 
 1. **タスクの作成ボタンをクリック**:
    - ユーザーはタスク一覧画面で「新しいタスクを作成」ボタンをクリックします。
@@ -106,7 +122,7 @@ image::../images/TaskClassDiagramTests.png[タスククラス図]
 4. **タスク一覧へのリダイレクト**:
    - タスクの保存が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、新しいタスクが一覧に表示されます。
 
-==== 4.3.2 タスクの編集
+==== 4.5.2 タスクの編集
 
 1. **タスクの選択**:
    - ユーザーは編集したいタスクをタスク一覧から選択します。
@@ -120,7 +136,7 @@ image::../images/TaskClassDiagramTests.png[タスククラス図]
 4. **タスク一覧へのリダイレクト**:
    - タスクの編集が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、更新されたタスクが一覧に表示されます。
 
-==== 4.3.3 タスクの削除
+==== 4.5.3 タスクの削除
 
 1. **タスクの選択**:
    - ユーザーは削除したいタスクをタスク一覧から選択します。
@@ -133,6 +149,7 @@ image::../images/TaskClassDiagramTests.png[タスククラス図]
 
 4. **タスク一覧の更新**:
    - タスクの削除が成功すると、タスク一覧が更新され、削除されたタスクが一覧から消えます。
+
 
 == 5. データモデル
 

@@ -11,7 +11,8 @@ package "Backend" {
     + get_tasks_by_due_date(): Response
   }
 }
-
+@enduml
+@startuml
 package "Types" {
   class TaskState {
     - tasks: Task[]
@@ -35,34 +36,29 @@ package "Types" {
     - details: string
     - order: number
   }
-}
 
+  TaskState *-- Task
+}
+@enduml
+@startuml
 package "Composables" {
   class useTasks {
-    - taskState: TaskState
-    - operations: TaskOperations
     + loadTasks(): void
     + fetchTasksByDueDate(dueDate: string): void
   }
 
   class useTaskPagination {
-    - state: TaskState
-    - totalPages: number
-    - paginatedTasks: Task[]
+    + paginatedTasks: Task[]
+    + totalPages: number
   }
 
   class useTaskOperations {
     + addTask(): void
     + removeSelectedTasks(): void
     + clearInput(): void
-    + deselectAllTasks(): void
-    + loadTasks(): void
   }
 
   class useTaskNotification {
-    - showToast: boolean
-    - toastType: string
-    - toastMessage: string
     + showToastMessage(message: string, type: string): void
   }
 
@@ -70,98 +66,46 @@ package "Composables" {
     + openEditModal(index: number): void
     + closeEditModal(): void
     + saveEditTask(): void
-    + getPriorityColor(dueDate: string): string
   }
 
   class useTaskDragDrop {
-    - draggedTaskIndex: number
-    - draggingTaskIndex: number
-    - dragDirection: string
     + onDragStart(index: number): void
     + onDragOver(index: number): void
     + onDrop(index: number): void
   }
 
-  class useFormattedDueDate {
-    - formattedDueDate: string
-    + getFormattedDueDate(dueDate: string): string
-  }
+  useTasks --> useTaskPagination
+  useTasks --> useTaskOperations
+  useTaskOperations --> useTaskNotification
+  useTaskEdit --> useTaskDragDrop
+}
+@enduml
+@startuml
+package "Backend" {
+  class FlaskApp
+}
 
-  class useTaskState {
-    - state: TaskState
-    - taskDisplayOptions: number[]
-  }
+package "Types" {
+  class TaskState
+  class Task
+  TaskState *-- Task
+}
+
+package "Composables" {
+  class useTasks
+  class useTaskPagination
+  class useTaskOperations
+  class useTaskNotification
+  class useTaskEdit
+  class useTaskDragDrop
 }
 
 FlaskApp <|-- TaskState
-TaskState *-- Task
 useTasks --> TaskState
-useTasks --> TaskOperations
 useTaskPagination --> TaskState
-useTaskPagination --> Task
-useTaskOperations --> Task
-useTaskNotification --> Task
-useTaskEdit --> Task
-useTaskDragDrop --> Task
-useFormattedDueDate --> Task
-useTaskState --> TaskState
+useTaskOperations --> TaskState
+useTaskNotification --> TaskState
+useTaskEdit --> TaskState
+useTaskDragDrop --> TaskState
 @enduml
-@startuml  TaskClassDiagramTests
-package "Tests" {
-  class EditModalSpec {
-    + testRender(): void
-    + testCloseButton(): void
-    + testSaveButton(): void
-  }
 
-  class PaginationSpec {
-    + testRender(): void
-    + testPrevButton(): void
-    + testNextButton(): void
-    + testPageButton(): void
-  }
-
-  class TaskControlsSpec {
-    + testRemoveButton(): void
-    + testDeselectButton(): void
-  }
-
-  class TaskDetailsModalSpec {
-    + testRender(): void
-    + testCloseButton(): void
-    + testEditButton(): void
-  }
-
-  class TaskInputSpec {
-    + testRender(): void
-    + testAddButton(): void
-    + testClearButton(): void
-  }
-
-  class TaskListSpec {
-    + testRender(): void
-    + testPriorityLabel(): void
-    + testDragAndDrop(): void
-  }
-
-  class TaskManagerSpec {
-    + testRender(): void
-    + testAddButton(): void
-    + testRemoveButton(): void
-    + testPagination(): void
-  }
-
-  class ToastNotificationSpec {
-    + testRender(): void
-    + testCloseButton(): void
-  }
-
-EditModalSpec --> EditModal
-PaginationSpec --> Pagination
-TaskControlsSpec --> TaskControls
-TaskDetailsModalSpec --> TaskDetailsModal
-TaskInputSpec --> TaskInput
-TaskListSpec --> TaskList
-TaskManagerSpec --> TaskManager
-ToastNotificationSpec --> ToastNotification
-@enduml

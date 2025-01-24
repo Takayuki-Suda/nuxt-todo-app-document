@@ -1,0 +1,24 @@
+@startuml
+package "Tests - UI Components" {
+  class EditModalSpec {
+    + testRender(): void
+    + testCloseButton(): void
+    + testSaveButton(): void
+  }
+
+  class TaskDetailsModalSpec {
+    + testRender(): void
+    + testCloseButton(): void
+    + testEditButton(): void
+  }
+
+  class ToastNotificationSpec {
+    + testRender(): void
+    + testCloseButton(): void
+  }
+}
+
+EditModalSpec --> EditModal
+TaskDetailsModalSpec --> TaskDetailsModal
+ToastNotificationSpec --> ToastNotification
+@enduml

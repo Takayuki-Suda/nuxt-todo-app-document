@@ -1,0 +1,18 @@
+@startuml
+package "Tests - Lists and Input" {
+  class TaskListSpec {
+    + testRender(): void
+    + testPriorityLabel(): void
+    + testDragAndDrop(): void
+  }
+
+  class TaskInputSpec {
+    + testRender(): void
+    + testAddButton(): void
+    + testClearButton(): void
+  }
+}
+
+TaskListSpec --> TaskList
+TaskInputSpec --> TaskInput
+@enduml

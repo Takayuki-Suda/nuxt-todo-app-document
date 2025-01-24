@@ -1,0 +1,26 @@
+@startuml
+package "Tests - Logic" {
+  class TaskControlsSpec {
+    + testRemoveButton(): void
+    + testDeselectButton(): void
+  }
+
+  class PaginationSpec {
+    + testRender(): void
+    + testPrevButton(): void
+    + testNextButton(): void
+    + testPageButton(): void
+  }
+
+  class TaskManagerSpec {
+    + testRender(): void
+    + testAddButton(): void
+    + testRemoveButton(): void
+    + testPagination(): void
+  }
+}
+
+TaskControlsSpec --> TaskControls
+PaginationSpec --> Pagination
+TaskManagerSpec --> TaskManager
+@enduml

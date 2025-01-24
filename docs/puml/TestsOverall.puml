@@ -1,0 +1,21 @@
+@startuml
+package "Tests" {
+  class EditModalSpec
+  class TaskDetailsModalSpec
+  class ToastNotificationSpec
+  class TaskControlsSpec
+  class PaginationSpec
+  class TaskManagerSpec
+  class TaskListSpec
+  class TaskInputSpec
+}
+
+EditModalSpec --> EditModal
+TaskDetailsModalSpec --> TaskDetailsModal
+ToastNotificationSpec --> ToastNotification
+TaskControlsSpec --> TaskControls
+PaginationSpec --> Pagination
+TaskManagerSpec --> TaskManager
+TaskListSpec --> TaskList
+TaskInputSpec --> TaskInput
+@enduml
