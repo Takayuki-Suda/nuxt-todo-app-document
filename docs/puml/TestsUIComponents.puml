@@ -1,5 +1,9 @@
 @startuml
-package "Tests - UI Components" {
+skinparam package {
+  BackgroundColor<<TestsUI>> #FFF2CC
+}
+
+package "Tests - UI Components" <<TestsUI>> {
   class EditModalSpec {
     + testRender(): void
     + testCloseButton(): void

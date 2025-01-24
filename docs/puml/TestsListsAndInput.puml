@@ -1,5 +1,9 @@
 @startuml
-package "Tests - Lists and Input" {
+skinparam package {
+  BackgroundColor<<TestsListsInput>>  #FFF2CC
+}
+
+package "Tests - Lists and Input" <<TestsListsInput>> {
   class TaskListSpec {
     + testRender(): void
     + testPriorityLabel(): void

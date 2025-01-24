@@ -1,5 +1,9 @@
 @startuml
-package "Tests" {
+skinparam package {
+  BackgroundColor<<Tests>> #FFF2CC
+}
+
+package "Tests" <<Tests>> {
   class EditModalSpec
   class TaskDetailsModalSpec
   class ToastNotificationSpec

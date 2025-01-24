@@ -1,5 +1,9 @@
 @startuml
-package "Tests - Logic" {
+skinparam package {
+  BackgroundColor<<Tests>> #FFF2CC
+}
+
+package "Tests - Logic" <<Tests>> {
   class TaskControlsSpec {
     + testRemoveButton(): void
     + testDeselectButton(): void
