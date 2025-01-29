@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Asciidoctor 2.0.23" />
+    <title>詳細設計 (Detailed Design)</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body class="article">
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="requirements_and_design.html">要件定義・基本設計</a>
+      <a href="detailed-design.html">詳細設計</a>
+    </nav>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect1">
+        <h2 id="_詳細設計_detailed_design">詳細設計 (Detailed Design)</h2>
+        <div class="sectionbody">
+          <div class="sect2">
+            <h3 id="_5_データモデル">5. データモデル</h3>
+            <div class="sect3">
+              <h4 id="_5_1_データベース構造">5.1 データベース構造</h4>
+              <div class="paragraph">
+                <p>
+                  データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています:
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-database" data-lang="database">CREATE DATABASE task_db;
+
+USE task_db;
+
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    text VARCHAR(255) NOT NULL,
+    completed BOOLEAN DEFAULT FALSE,
+    dueDate DATETIME NOT NULL
+);
+ALTER TABLE tasks CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>
+                  このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます:
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>id: 一意の識別子（自動増分、主キー）</p>
+                  </li>
+                  <li>
+                    <p>text: タスクの内容</p>
+                  </li>
+                  <li>
+                    <p>completed: タスクの完了状態（デフォルトは FALSE）</p>
+                  </li>
+                  <li>
+                    <p>dueDate: タスクの期限日</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_5_2_er_図">5.2 ER 図</h3>
+            <div class="paragraph">
+              <p>エンティティとリレーションの図を示します。</p>
+            </div>
+            <div class="imageblock">
+              <div class="content">
+                <img src="../images/TaskDatabaseERDiagram.png" alt="ER図" />
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_6_サンプルコード">6. サンプルコード</h3>
+            <div class="sect3">
+              <h4 id="_6_1_フロントエンドコード">6.1 フロントエンドコード</h4>
+              <div class="paragraph">
+                <p>フロントエンドの主要なコード例を提供します。</p>
+              </div>
+              <div class="sect4">
+                <h5 id="_6_1_1_フロントエンドの初期化">
+                  6.1.1 フロントエンドの初期化
+                </h5>
+                <div class="paragraph">
+                  <p>Nuxt プロジェクトを初期化します。</p>
+                </div>
+                <div class="listingblock">
+                  <div class="content">
+                    <pre
+                      class="highlight"
+                    ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="sect4">
+                <h5 id="_6_1_2_フロントエンドのコード例">
+                  6.1.2 フロントエンドのコード例
+                </h5>
+                <div class="listingblock">
+                  <div class="content">
+                    <pre
+                      class="highlight"
+                    ><code class="language-vue" data-lang="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;タスク一覧&lt;/h1&gt;
+    &lt;ul&gt;
+      &lt;li v-for="task in tasks" :key="task.id"&gt;
+        {{ task.text }} - {{ task.dueDate }}
+        &lt;button @click="completeTask(task.id)"&gt;完了&lt;/button&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  mounted() {
+    this.fetchTasks();
+  },
+  methods: {
+    fetchTasks() {
+      // APIからタスクを取得する例
+      axios.get("/api/tasks").then((response) =&gt; {
+        this.tasks = response.data;
+      });
+    },
+    completeTask(id) {
+      // タスクを完了するAPI呼び出し例
+      axios.post(`/api/tasks/${id}/complete`).then(() =&gt; {
+        this.fetchTasks();
+      });
+    },
+  },
+};
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+/* スタイルの例 */
+button {
+  margin-left: 10px;
+}
+&lt;/style&gt;</code></pre>
+                  </div>
+                </div>
+              </div>
+              <div class="sect4">
+                <h5 id="_6_1_3_フロントエンドデザイン">
+                  6.1.3 フロントエンドデザイン
+                </h5>
+                <div class="paragraph">
+                  <p>
+                    このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_タスク詳細画面">タスク詳細画面</h4>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../sample/frontend/images/task_detail.png"
+                    alt="TaskDetail"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_タスク編集画面">タスク編集画面</h4>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../sample/frontend/images/task_edit.png"
+                    alt="TaskEdit"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_タスクフィルター画面">タスクフィルター画面</h4>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../sample/frontend/images/task_filter.png"
+                    alt="TaskFilter"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_タスク一覧画面">タスク一覧画面</h4>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../sample/frontend/images/task_list.png"
+                    alt="TaskList"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_6_2_バックエンドコード">6.2 バックエンドコード</h4>
+              <div class="paragraph">
+                <p>サーバサイドのサンプルコードを提供します。</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-python" data-lang="python">from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/task_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(255), nullable=False)
+    completed = db.Column(db.Boolean, default=False)
+    dueDate = db.Column(db.DateTime, nullable=False)
+
+@app.route('/api/tasks', methods=['GET'])
+def get_tasks():
+    tasks = Task.query.all()
+    return jsonify([{'id': task.id, 'text': task.text, 'completed': task.completed, 'dueDate': task.dueDate} for task in tasks])
+
+@app.route('/api/tasks', methods=['POST'])
+def create_task():
+    data = request.get_json()
+    new_task = Task(text=data['text'], dueDate=datetime.strptime(data['dueDate'], '%Y-%m-%d %H:%M:%S'))
+    db.session.add(new_task)
+    db.session.commit()
+    return jsonify({'id': new_task.id, 'text': new_task.text, 'completed': new_task.completed, 'dueDate': new_task.dueDate})
+
+@app.route('/api/tasks/&lt;int:id&gt;/complete', methods=['POST'])
+def complete_task(id):
+    task = Task.query.get(id)
+    if task:
+        task.completed = True
+        db.session.commit()
+        return jsonify({'id': task.id, 'text': task.text, 'completed': task.completed, 'dueDate': task.dueDate})
+    return jsonify({'error': 'Task not found'}), 404
+
+if __name__ == '__main__':
+    db.create_all()
+    app.run(debug=True)</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_7_使用技術の詳細">7. 使用技術の詳細</h3>
+            <div class="sect3">
+              <h4 id="_7_1_フロントエンド技術">7.1 フロントエンド技術</h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Vue.js</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Vue.js
+                            は、インタラクティブなユーザーインターフェースを構築するための
+                            JavaScript フレームワークです。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            コンポーネントベースのアーキテクチャ、双方向データバインディング、仮想
+                            DOM など。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>latest</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>Nuxt3</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Nuxt.js は、Vue.js
+                            の拡張フレームワークで、サーバーサイドレンダリング（SSR）や静的サイト生成（SSG）をサポートします。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            ルーティングやデータフェッチの簡略化、豊富なモジュールエコシステム。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^3.15.1</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>Vue Toastification</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>:
+                            ユーザーに非侵入的な通知を提供するためのライブラリ。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            シンプルでカスタマイズ可能なトースト通知。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^2.1.2</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_2_バックエンド技術">7.2 バックエンド技術</h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Flask</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Flask は、Python の軽量な Web
+                            フレームワークです。RESTful API
+                            を迅速に構築できます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            軽量、柔軟、豊富な拡張機能を持つ。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^2.2.2</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>MySQL</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: MySQL
+                            は、リレーショナルデータベース管理システムです。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>特徴</strong>:
+                            高性能、大規模なデータを扱う能力、広範なサポート。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^8.0.26</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_3_その他のユーティリティ">
+                7.3 その他のユーティリティ
+              </h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Axios</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: HTTP
+                            クライアントライブラリで、API
+                            リクエストを簡単に行うために使用されます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^1.7.9</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>Bootstrap</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: CSS
+                            フレームワークで、レスポンシブデザインとスタイリングを実現します。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^5.3.3</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_4_テストツール">7.4 テストツール</h4>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p><strong>Vitest</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>:
+                            高速なテストランナーで、ユニットテストと統合テストを実行するために使用されます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^2.1.8</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>@nuxt/test-utils</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: Nuxt.js
+                            アプリケーションのテストを簡単に行うためのユーティリティ。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^3.15.1</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <p><strong>TypeScript</strong></p>
+                    <div class="ulist">
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>説明</strong>: 型安全な JavaScript
+                            で、コードの品質と保守性を向上させます。
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>バージョン</strong>: <code>^5.7.2</code>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_5_環境変数の設定">7.5 環境変数の設定</h4>
+              <div class="listingblock">
+                <div class="title">
+                  env ファイルを作成し、以下の内容を記入します:
+                </div>
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-env" data-lang="env">MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=root123!
+MYSQL_DB=task_db
+MYSQL_CURSORCLASS=DictCursor</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_7_6_仮想環境の作成と依存関係の設定">
+                7.6 仮想環境の作成と依存関係の設定
+              </h4>
+              <div class="paragraph">
+                <p>
+                  依存関係を隔離することで競合を防ぐため、仮想環境を作成します。
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">python -m venv venv</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>
+                  作成した仮想環境を有効にするコマンド（Bash シェルの場合）:
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">source venv/Scripts/activate</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>`.gitignore`ファイルに以下の行を追加します:</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-git" data-lang="git">venv/</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>パッケージをインストールします:</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">pip install -r requirements.txt</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>requirements.txt の内容:</p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-text" data-lang="text">blinker==1.9.0
+click==8.1.8
+colorama==0.4.6
+Flask==3.1.0
+Flask-Cors==5.0.0
+Flask-MySQLdb==2.0.0
+itsdangerous==2.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+mysqlclient==2.2.7
+python-dotenv==1.0.1
+Werkzeug==3.1.3</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>
+                  Nuxt.js
+                  を使用して開発サーバーを起動するには、以下のコマンドを実行します:
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">npm run dev</code></pre>
+                </div>
+              </div>
+              <div class="paragraph">
+                <p>
+                  Flask
+                  アプリケーションを実行するには、以下のコマンドを実行します:
+                </p>
+              </div>
+              <div class="listingblock">
+                <div class="content">
+                  <pre
+                    class="highlight"
+                  ><code class="language-bash" data-lang="bash">python app.py</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_8_付録">8. 付録</h3>
+            <div class="sect3">
+              <h4 id="_8_1_用語集">8.1 用語集</h4>
+              <div class="paragraph">
+                <p>
+                  このセクションでは、プロジェクトで使用される専門用語や略語の定義を記述します。
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      SSR (サーバーサイドレンダリング):
+                      サーバー側でコンテンツをレンダリングし、クライアントに送信する技術。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      SSG (静的サイト生成): 事前に静的な HTML
+                      ページを生成し、サーバーに配置する技術。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      CRUD: Create, Read, Update, Delete
+                      の略で、データベース操作の基本的な操作を指す。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      API (アプリケーションプログラミングインターフェイス):
+                      アプリケーション同士が通信するためのインターフェース。タスクデータの取得や更新に使用。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      DOM: Document Object Model の略で、HTML や XML
+                      文書をプログラムから操作するための仕組み。
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_8_2_参考資料">8.2 参考資料</h4>
+              <div class="paragraph">
+                <p>
+                  プロジェクトの設計や実装に参考にした書籍、論文、ウェブサイトなどの資料を一覧化します。
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      <a href="https://nuxt.com/docs"
+                        >Nuxt.js 公式ドキュメント</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="https://vuejs.org/guide/introduction.html"
+                        >Vue.js 公式ガイド</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="https://flask.palletsprojects.com/en/latest/"
+                        >Flask 公式ドキュメント</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="https://dev.mysql.com/doc/"
+                        >MySQL 公式ドキュメント</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_9_結論">9. 結論</h3>
+            <div class="paragraph">
+              <p>
+                このドキュメントでは、タスク管理アプリケーションの設計、使用技術、動作フロー、テスト手法、デプロイメントの手順について詳細に説明しました。本アプリケーションは、ユーザーにとって直感的に使いやすいインターフェースと、効率的なタスク管理機能を提供します。今後の改善点としては、UI
+                のさらなる改善や、新しい機能の追加が考えられます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="footer-text">Last updated 2025-01-24 17:21:48 +0900</div>
+    </div>
+  </body>
+</html>

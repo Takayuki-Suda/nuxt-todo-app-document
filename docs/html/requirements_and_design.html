@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Asciidoctor 2.0.23" />
+    <title>使用技術の詳細</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body class="article">
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="requirements_and_design.html">要件定義・基本設計</a>
+      <a href="detailed-design.html">詳細設計</a>
+    </nav>
+    <div id="header">
+      <h1>使用技術の詳細</h1>
+    </div>
+    <div id="content">
+      <div class="sect1">
+        <h2 id="_要件定義_requirement_definition">
+          要件定義 (Requirement Definition)
+        </h2>
+        <div class="sectionbody">
+          <div class="sect2">
+            <h3 id="_1_概要">1. 概要</h3>
+            <div class="sect3">
+              <h4 id="_1_1_タスク一覧画面">1.1 タスク一覧画面</h4>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../sample/frontend/images/task_list.png"
+                    alt="タスク一覧画面"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_1_2_イントロダクション">1.2 イントロダクション</h4>
+              <div class="paragraph">
+                <p>
+                  このドキュメントは、Nuxt.js
+                  を使用したタスク管理アプリケーションの設計書です。アプリケーションの構成、使用技術、動作フローについて詳細に説明します。
+                </p>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_1_3_目的">1.3 目的</h4>
+              <div class="paragraph">
+                <p>
+                  このドキュメントの目的は、プロジェクトの開発者がアプリケーションの設計と実装について統一された理解を持つことを助けることです。
+                </p>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_1_4_範囲">1.4 範囲</h4>
+              <div class="paragraph">
+                <p>
+                  この設計書は、フロントエンドおよびバックエンドの主要なコンポーネント、データモデル、使用技術、開発およびテストの設定を網羅します。
+                </p>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_1_5_定義">1.5 定義</h4>
+              <div class="paragraph">
+                <p>
+                  このセクションでは、このドキュメントで使用される主要な用語と概念を簡潔に記述します。
+                </p>
+              </div>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>
+                      <strong>タスク管理</strong>:
+                      タスクの作成、編集、削除、完了などの操作を指します。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>フロントエンド</strong>:
+                      ユーザーが直接操作する部分。Vue.js と Nuxt.js を使用。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>バックエンド</strong>:
+                      サーバーサイドのロジックとデータ管理を担当する部分。Flask
+                      と MySQL を使用。
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sect1">
+        <h2 id="_基本設計_basic_design">基本設計 (Basic Design)</h2>
+        <div class="sectionbody">
+          <div class="sect2">
+            <h3 id="_2_アーキテクチャ">2. アーキテクチャ</h3>
+            <div class="sect3">
+              <h4 id="_2_1_アーキテクチャ図">2.1 アーキテクチャ図</h4>
+              <div class="paragraph">
+                <p>
+                  アーキテクチャ図はアプリケーション全体の構成を視覚的に示します。各コンポーネント間の関係とデータフローが明確にわかります。
+                  以下にアプリケーションの全体アーキテクチャ図を提供し、各コンポーネントの関係を示します。
+                </p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementArchitectureDiagram.png"
+                    alt="アーキテクチャ図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/SystemArchitectureDiagram.png"
+                    alt="システムアーキテクチャ図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_2_2_コンポーネント説明">2.2 コンポーネント説明</h4>
+              <div class="paragraph">
+                <p>各コンポーネントの詳細な説明を提供します。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskComponentDiagram.png"
+                    alt="コンポーネント図"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_3_状態遷移図と状態説明">3. 状態遷移図と状態説明</h3>
+            <div class="sect3">
+              <h4 id="_3_1_状態遷移図">3.1 状態遷移図</h4>
+              <div class="paragraph">
+                <p>ユーザーの操作に応じた状態遷移図を提供します。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskStateTransitionDiagram.png"
+                    alt="状態遷移図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_3_2_状態説明">3.2 状態説明</h4>
+              <div class="paragraph">
+                <p>各状態の詳細な説明を提供します。</p>
+              </div>
+              <div class="paragraph">
+                <p>状態遷移図に基づいて、各状態の詳細を以下に説明します：</p>
+              </div>
+              <div class="olist arabic">
+                <ol class="arabic">
+                  <li>
+                    <p>
+                      <strong>初期状態</strong>:
+                      アプリケーションが初期化された状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>ログイン状態</strong>:
+                      ユーザーがログインしている状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>タスク表示状態</strong>:
+                      ユーザーがタスクを表示している状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>タスク編集状態</strong>:
+                      ユーザーがタスクを編集している状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>タスク完了状態</strong>:
+                      ユーザーがタスクを完了させた状態。
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>ログアウト状態</strong>:
+                      ユーザーがログアウトしている状態。
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_4_フローチャート">4. フローチャート</h3>
+            <div class="sect3">
+              <h4 id="_4_1_全体のフローチャート">4.1 全体のフローチャート</h4>
+              <div class="paragraph">
+                <p>
+                  以下のフローチャートは、アプリケーション全体の主要な操作フローを示しています。ユーザーの操作に基づくシステムの挙動が一目でわかります。
+                  これにより、設計書がさらにわかりやすくなり、他の開発者にも理解しやすくなります。
+                </p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementFlowchart.png"
+                    alt="タスク管理フローチャート"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/DetailedInteractionDiagram.png"
+                    alt="詳細なインタラクション図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/SimpleInteractionDiagram.png"
+                    alt="シンプルなインタラクション図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementDeploymentDiagram.png"
+                    alt="タスク管理デプロイメント図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementPackageDiagram.png"
+                    alt="パッケージ図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskManagementUseCaseDiagram.png"
+                    alt="ユースケース図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_2_フロントエンドフローチャート">
+                4.2 フロントエンドフローチャート
+              </h4>
+              <div class="paragraph">
+                <p>
+                  フロントエンドの具体的な操作フローを示すフローチャートです。
+                </p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/FrontendTaskFlowchart.png"
+                    alt="フロントエンドタスクフロー"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TaskAddSequenceDiagram.png"
+                    alt="タスク追加シーケンス図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_3_バックエンドクラス図">4.3 バックエンドクラス図</h4>
+              <div class="paragraph">
+                <p>バックエンドのクラス構造を示す図です。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/BackendClassDiagram.png"
+                    alt="バックエンドクラス図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TypesClassDiagram.png"
+                    alt="タスクデータモデル図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/ComposablesClassDiagram.png"
+                    alt="Composableクラス図"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/OverallSimplifiedDiagram.png"
+                    alt="全体簡略図"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_4_テストクラス図">4.4 テストクラス図</h4>
+              <div class="paragraph">
+                <p>各テストのクラス図を示します。</p>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TestsUIComponents.png"
+                    alt="テストUIコンポーネント"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img src="../images/TestsLogic.png" alt="テストロジック" />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img
+                    src="../images/TestsListsAndInput.png"
+                    alt="テストリストと入力"
+                  />
+                </div>
+              </div>
+              <div class="imageblock">
+                <div class="content">
+                  <img src="../images/TestsOverall.png" alt="テスト全体" />
+                </div>
+              </div>
+            </div>
+            <div class="sect3">
+              <h4 id="_4_5_詳細なプロセス説明">4.5 詳細なプロセス説明</h4>
+              <div class="paragraph">
+                <p>
+                  このセクションでは、各プロセスのステップバイステップの詳細な説明を提供します。
+                </p>
+              </div>
+              <div class="sect4">
+                <h5 id="_4_5_1_タスクの作成">4.5.1 タスクの作成</h5>
+                <div class="olist arabic">
+                  <ol class="arabic">
+                    <li>
+                      <p><strong>タスクの作成ボタンをクリック</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーはタスク一覧画面で「新しいタスクを作成」ボタンをクリックします。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク作成フォームの表示</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              新しいタスク作成フォームが表示されます。ユーザーはタスク名、説明、期限などの情報を入力します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスクの保存</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              フォームの「保存」ボタンをクリックすると、入力された情報がサーバーに送信され、新しいタスクがデータベースに保存されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク一覧へのリダイレクト</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスクの保存が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、新しいタスクが一覧に表示されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="sect4">
+                <h5 id="_4_5_2_タスクの編集">4.5.2 タスクの編集</h5>
+                <div class="olist arabic">
+                  <ol class="arabic">
+                    <li>
+                      <p><strong>タスクの選択</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーは編集したいタスクをタスク一覧から選択します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク編集フォームの表示</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              選択したタスクの編集フォームが表示され、ユーザーはタスク名、説明、期限などの情報を編集します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>編集内容の保存</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              フォームの「保存」ボタンをクリックすると、編集された情報がサーバーに送信され、タスクが更新されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク一覧へのリダイレクト</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスクの編集が成功すると、ユーザーはタスク一覧画面にリダイレクトされ、更新されたタスクが一覧に表示されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="sect4">
+                <h5 id="_4_5_3_タスクの削除">4.5.3 タスクの削除</h5>
+                <div class="olist arabic">
+                  <ol class="arabic">
+                    <li>
+                      <p><strong>タスクの選択</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーは削除したいタスクをタスク一覧から選択します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>削除確認ダイアログの表示</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスク削除確認ダイアログが表示され、ユーザーは削除の意図を確認します。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスクの削除</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              ユーザーが「削除」ボタンをクリックすると、タスクがサーバーから削除され、データベースからも削除されます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p><strong>タスク一覧の更新</strong>:</p>
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <p>
+                              タスクの削除が成功すると、タスク一覧が更新され、削除されたタスクが一覧から消えます。
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="footer-text">Last updated 2025-01-24 17:21:57 +0900</div>
+    </div>
+  </body>
+</html>
