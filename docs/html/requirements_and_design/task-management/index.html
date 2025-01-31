@@ -10,17 +10,42 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
     />
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../../../css/common.css" />
   </head>
   <body class="article">
-    <nav>
-      <a href="index.html">ホーム</a>
-      <a href="requirements_and_design.html">要件定義・基本設計</a>
-      <a href="detailed-design.html">詳細設計</a>
-      <a href="technology-details.html">使用技術の詳細</a>
+    <nav id="main-nav">
+      <a href="../../home/index.html">ホーム</a>
+      <div class="dropdown">
+        <a class="dropbtn">要件定義・基本設計</a>
+        <div class="dropdown-content">
+          <a href="../../requirements_and_design/task-management/index.html"
+            >タスク管理</a
+          >
+          <a href="../../requirements_and_design/featureA/index.html">機能A</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="dropbtn">詳細設計</a>
+        <div class="dropdown-content">
+          <a href="../../detailed-design/task-management/index.html"
+            >タスク管理</a
+          >
+          <a href="../../detailed-design/featureA/index.html">機能A</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="dropbtn">使用技術の詳細</a>
+        <div class="dropdown-content">
+          <a href="../../technology-details/task-management/index.html"
+            >タスク管理</a
+          >
+          <a href="../../technology-details/featureA/index.html">機能A</a>
+        </div>
+      </div>
     </nav>
     <div id="header">
       <h1>要件定義 (Requirement Definition)</h1>
+      <h2>task-management</h2>
     </div>
     <div id="content">
       <div class="toc">
@@ -70,7 +95,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../sample/frontend/images/task_list.png"
+                    src="../../../sample/frontend/images/task_list.png"
                     alt="タスク一覧画面"
                   />
                 </div>
@@ -151,7 +176,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskManagementArchitectureDiagram.png"
+                    src="../../../images/TaskManagementArchitectureDiagram.png"
                     alt="アーキテクチャ図"
                   />
                 </div>
@@ -159,7 +184,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/SystemArchitectureDiagram.png"
+                    src="../../../images/SystemArchitectureDiagram.png"
                     alt="システムアーキテクチャ図"
                   />
                 </div>
@@ -173,7 +198,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskComponentDiagram.png"
+                    src="../../../images/TaskComponentDiagram.png"
                     alt="コンポーネント図"
                   />
                 </div>
@@ -190,7 +215,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskStateTransitionDiagram.png"
+                    src="../../../images/TaskStateTransitionDiagram.png"
                     alt="状態遷移図"
                   />
                 </div>
@@ -259,7 +284,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskManagementFlowchart.png"
+                    src="../../../images/TaskManagementFlowchart.png"
                     alt="タスク管理フローチャート"
                   />
                 </div>
@@ -267,7 +292,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/DetailedInteractionDiagram.png"
+                    src="../../../images/DetailedInteractionDiagram.png"
                     alt="詳細なインタラクション図"
                   />
                 </div>
@@ -275,7 +300,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/SimpleInteractionDiagram.png"
+                    src="../../../images/SimpleInteractionDiagram.png"
                     alt="シンプルなインタラクション図"
                   />
                 </div>
@@ -283,7 +308,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskManagementDeploymentDiagram.png"
+                    src="../../../images/TaskManagementDeploymentDiagram.png"
                     alt="タスク管理デプロイメント図"
                   />
                 </div>
@@ -291,7 +316,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskManagementPackageDiagram.png"
+                    src="../../../images/TaskManagementPackageDiagram.png"
                     alt="パッケージ図"
                   />
                 </div>
@@ -299,7 +324,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskManagementUseCaseDiagram.png"
+                    src="../../../images/TaskManagementUseCaseDiagram.png"
                     alt="ユースケース図"
                   />
                 </div>
@@ -317,7 +342,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/FrontendTaskFlowchart.png"
+                    src="../../../images/FrontendTaskFlowchart.png"
                     alt="フロントエンドタスクフロー"
                   />
                 </div>
@@ -325,7 +350,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TaskAddSequenceDiagram.png"
+                    src="../../../images/TaskAddSequenceDiagram.png"
                     alt="タスク追加シーケンス図"
                   />
                 </div>
@@ -339,7 +364,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/BackendClassDiagram.png"
+                    src="../../../images/BackendClassDiagram.png"
                     alt="バックエンドクラス図"
                   />
                 </div>
@@ -347,7 +372,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TypesClassDiagram.png"
+                    src="../../../images/TypesClassDiagram.png"
                     alt="タスクデータモデル図"
                   />
                 </div>
@@ -355,7 +380,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/ComposablesClassDiagram.png"
+                    src="../../../images/ComposablesClassDiagram.png"
                     alt="Composableクラス図"
                   />
                 </div>
@@ -363,7 +388,7 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/OverallSimplifiedDiagram.png"
+                    src="../../../images/OverallSimplifiedDiagram.png"
                     alt="全体簡略図"
                   />
                 </div>
@@ -377,27 +402,33 @@
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TestsUIComponents.png"
+                    src="../../../images/TestsUIComponents.png"
                     alt="テストUIコンポーネント"
                   />
                 </div>
               </div>
               <div class="imageblock">
                 <div class="content">
-                  <img src="../images/TestsLogic.png" alt="テストロジック" />
+                  <img
+                    src="../../../images/TestsLogic.png"
+                    alt="テストロジック"
+                  />
                 </div>
               </div>
               <div class="imageblock">
                 <div class="content">
                   <img
-                    src="../images/TestsListsAndInput.png"
+                    src="../../../images/TestsListsAndInput.png"
                     alt="テストリストと入力"
                   />
                 </div>
               </div>
               <div class="imageblock">
                 <div class="content">
-                  <img src="../images/TestsOverall.png" alt="テスト全体" />
+                  <img
+                    src="../../../images/TestsOverall.png"
+                    alt="テスト全体"
+                  />
                 </div>
               </div>
             </div>

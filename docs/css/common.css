@@ -1855,7 +1855,6 @@ p.tableblock {
 /* ナビゲーションバーのスタイル */
 nav {
   background-color: #333;
-  overflow: hidden;
 }
 
 nav a {
@@ -2029,4 +2028,58 @@ nav a:hover {
   #footer {
     padding: 0;
   }
+}
+
+#main-nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #333; /* 背景色を設定 */
+  padding: 10px;
+  z-index: 1000; /* 他の要素より前に表示 */
+}
+
+#main-nav .dropdown {
+  position: relative;
+}
+
+#main-nav .dropdown .dropbtn {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: white; /* ナビゲーションの文字色 */
+  background-color: #333; /* ボタンの背景色 */
+}
+
+#main-nav .dropdown-content {
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  border: 1px solid #ccc; /* 境界線を追加して見えやすく */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* ドロップダウンを最前面に */
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+#main-nav .dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+}
+
+#main-nav .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+#main-nav .dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
