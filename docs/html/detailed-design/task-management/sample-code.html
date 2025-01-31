@@ -1,92 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Asciidoctor 2.0.23" />
-    <title>詳細設計 (Detailed Design)</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
-    />
-    <link rel="stylesheet" href="../../../static/css/common.css" />
-  </head>
-  <body class="article">
-    <nav id="main-nav">
-      <a href="../../home/index.html">ホーム</a>
-      <div class="dropdown">
-        <a class="dropbtn">要件定義・基本設計</a>
-        <div class="dropdown-content">
-          <a href="../../requirements_and_design/task-management/index.html"
-            >タスク管理</a
-          >
-          <a href="../../requirements_and_design/featureA/index.html">機能A</a>
+{% extends "templates/base.html" %} {% block content %}
+<div id="header">
+  <h1>サンプルコード (Sample Code)</h1>
+  <h2>task-management</h2>
+</div>
+<div id="content">
+  <div class="toc">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="data-model.html">5. データモデル</a></li>
+      <li>
+        <a href="sample-code.html">6. サンプルコード</a>
+      </li>
+    </ul>
+  </div>
+  <div class="sect2">
+    <h3 id="_6_サンプルコード">6. サンプルコード</h3>
+    <div class="sect3">
+      <h4 id="_6_1_フロントエンドコード">6.1 フロントエンドコード</h4>
+      <div class="paragraph">
+        <p>フロントエンドの主要なコード例を提供します。</p>
+      </div>
+      <div class="sect4">
+        <h5 id="_6_1_1_フロントエンドの初期化">6.1.1 フロントエンドの初期化</h5>
+        <div class="paragraph">
+          <p>Nuxt プロジェクトを初期化します。</p>
+        </div>
+        <div class="listingblock">
+          <div class="content">
+            <pre
+              class="highlight"
+            ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
+          </div>
         </div>
       </div>
-      <div class="dropdown">
-        <a class="dropbtn">詳細設計</a>
-        <div class="dropdown-content">
-          <a href="../../detailed-design/task-management/index.html"
-            >タスク管理</a
-          >
-          <a href="../../detailed-design/featureA/index.html">機能A</a>
-        </div>
-      </div>
-      <a href="../../technology-details/task-management/index.html"
-        >使用技術の詳細</a
-      >
-    </nav>
-    <div id="header">
-      <h1>サンプルコード (Sample Code)</h1>
-      <h2>task-management</h2>
-    </div>
-    <div id="content">
-      <div class="toc">
-        <h2>目次</h2>
-        <ul>
-          <li><a href="data-model.html">5. データモデル</a></li>
-          <li>
-            <a href="sample-code.html">6. サンプルコード</a>
-          </li>
-        </ul>
-      </div>
-      <div class="sect2">
-        <h3 id="_6_サンプルコード">6. サンプルコード</h3>
-        <div class="sect3">
-          <h4 id="_6_1_フロントエンドコード">6.1 フロントエンドコード</h4>
-          <div class="paragraph">
-            <p>フロントエンドの主要なコード例を提供します。</p>
-          </div>
-          <div class="sect4">
-            <h5 id="_6_1_1_フロントエンドの初期化">
-              6.1.1 フロントエンドの初期化
-            </h5>
-            <div class="paragraph">
-              <p>Nuxt プロジェクトを初期化します。</p>
-            </div>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
-              </div>
-            </div>
-          </div>
-          <div class="sect4">
-            <h5 id="_6_1_2_フロントエンドのコード例">
-              6.1.2 フロントエンドのコード例
-            </h5>
-            <div class="listingblock">
-              <div class="content">
-                <pre
-                  class="highlight"
-                ><code class="language-vue" data-lang="vue">&lt;template&gt;
+      <div class="sect4">
+        <h5 id="_6_1_2_フロントエンドのコード例">
+          6.1.2 フロントエンドのコード例
+        </h5>
+        <div class="listingblock">
+          <div class="content">
+            <pre
+              class="highlight"
+            ><code class="language-vue" data-lang="vue">&lt;template&gt;
 &lt;div&gt;
 &lt;h1&gt;タスク一覧&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li v-for="task in tasks" :key="task.id"&gt;
-    {{ task.text }} - {{ task.dueDate }}
+  &lbrace;&lbrace; task.text &rbrace;&rbrace; &ndash; &lbrace;&lbrace; task.dueDate &rbrace;&rbrace;
     &lt;button @click="completeTask(task.id)"&gt;完了&lt;/button&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -126,74 +86,72 @@ button {
 margin-left: 10px;
 }
 &lt;/style&gt;</code></pre>
-              </div>
-            </div>
-          </div>
-          <div class="sect4">
-            <h5 id="_6_1_3_フロントエンドデザイン">
-              6.1.3 フロントエンドデザイン
-            </h5>
-            <div class="paragraph">
-              <p>
-                このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
-              </p>
-            </div>
           </div>
         </div>
-        <div class="sect3">
-          <h4 id="_タスク詳細画面">タスク詳細画面</h4>
-          <div class="imageblock">
-            <div class="content">
-              <img
-                src="../../../static/sample/frontend/images/task_detail.png"
-                alt="TaskDetail"
-              />
-            </div>
-          </div>
+      </div>
+      <div class="sect4">
+        <h5 id="_6_1_3_フロントエンドデザイン">6.1.3 フロントエンドデザイン</h5>
+        <div class="paragraph">
+          <p>
+            このセクションでは、フロントエンドのデザイン例を示します。これらのデザインは、開発者が実際のフロントエンドを実装する際の参考として使用してください。
+          </p>
         </div>
-        <div class="sect3">
-          <h4 id="_タスク編集画面">タスク編集画面</h4>
-          <div class="imageblock">
-            <div class="content">
-              <img
-                src="../../../static/sample/frontend/images/task_edit.png"
-                alt="TaskEdit"
-              />
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="sect3">
+      <h4 id="_タスク詳細画面">タスク詳細画面</h4>
+      <div class="imageblock">
+        <div class="content">
+          <img
+            src="../../../static/sample/frontend/images/task_detail.png"
+            alt="TaskDetail"
+          />
         </div>
-        <div class="sect3">
-          <h4 id="_タスクフィルター画面">タスクフィルター画面</h4>
-          <div class="imageblock">
-            <div class="content">
-              <img
-                src="../../../static/sample/frontend/images/task_filter.png"
-                alt="TaskFilter"
-              />
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="sect3">
+      <h4 id="_タスク編集画面">タスク編集画面</h4>
+      <div class="imageblock">
+        <div class="content">
+          <img
+            src="../../../static/sample/frontend/images/task_edit.png"
+            alt="TaskEdit"
+          />
         </div>
-        <div class="sect3">
-          <h4 id="_タスク一覧画面">タスク一覧画面</h4>
-          <div class="imageblock">
-            <div class="content">
-              <img
-                src="../../../static/sample/frontend/images/task_list.png"
-                alt="TaskList"
-              />
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="sect3">
+      <h4 id="_タスクフィルター画面">タスクフィルター画面</h4>
+      <div class="imageblock">
+        <div class="content">
+          <img
+            src="../../../static/sample/frontend/images/task_filter.png"
+            alt="TaskFilter"
+          />
         </div>
-        <div class="sect3">
-          <h4 id="_6_2_バックエンドコード">6.2 バックエンドコード</h4>
-          <div class="paragraph">
-            <p>サーバサイドのサンプルコードを提供します。</p>
-          </div>
-          <div class="listingblock">
-            <div class="content">
-              <pre
-                class="highlight"
-              ><code class="language-python" data-lang="python">from flask import Flask, request, jsonify
+      </div>
+    </div>
+    <div class="sect3">
+      <h4 id="_タスク一覧画面">タスク一覧画面</h4>
+      <div class="imageblock">
+        <div class="content">
+          <img
+            src="../../../static/sample/frontend/images/task_list.png"
+            alt="TaskList"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="sect3">
+      <h4 id="_6_2_バックエンドコード">6.2 バックエンドコード</h4>
+      <div class="paragraph">
+        <p>サーバサイドのサンプルコードを提供します。</p>
+      </div>
+      <div class="listingblock">
+        <div class="content">
+          <pre
+            class="highlight"
+          ><code class="language-python" data-lang="python">from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -233,13 +191,9 @@ return jsonify({'error': 'Task not found'}), 404
 if __name__ == '__main__':
 db.create_all()
 app.run(debug=True)</code></pre>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-    <div id="footer">
-      <!-- ...existing code... -->
-    </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}

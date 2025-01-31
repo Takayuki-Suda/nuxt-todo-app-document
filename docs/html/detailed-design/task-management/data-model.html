@@ -1,70 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Asciidoctor 2.0.23" />
-    <title>詳細設計 (Detailed Design)</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
-    />
-    <link rel="stylesheet" href="../../../static/css/common.css" />
-  </head>
-  <body class="article">
-    <nav id="main-nav">
-      <a href="../../home/index.html">ホーム</a>
-      <div class="dropdown">
-        <a class="dropbtn">要件定義・基本設計</a>
-        <div class="dropdown-content">
-          <a href="../../requirements_and_design/task-management/index.html"
-            >タスク管理</a
-          >
-          <a href="../../requirements_and_design/featureA/index.html">機能A</a>
-        </div>
+{% extends "templates/base.html" %} {% block content %}
+<div id="header">
+  <h1>データモデル (Data Model)</h1>
+  <h2>task-management</h2>
+</div>
+<div id="content">
+  <div class="toc">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="data-model.html">5. データモデル</a></li>
+      <li><a href="sample-code.html">6. サンプルコード</a></li>
+    </ul>
+  </div>
+  <div class="sect1">
+    <h2 id="_5_データモデル">5. データモデル</h2>
+    <div class="sect2">
+      <h3 id="_5_1_データベース構造">5.1 データベース構造</h3>
+      <div class="paragraph">
+        <p>
+          データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています:
+        </p>
       </div>
-      <div class="dropdown">
-        <a class="dropbtn">詳細設計</a>
-        <div class="dropdown-content">
-          <a href="../../detailed-design/task-management/index.html"
-            >タスク管理</a
-          >
-          <a href="../../detailed-design/featureA/index.html">機能A</a>
-        </div>
-      </div>
-      <a href="../../technology-details/task-management/index.html"
-        >使用技術の詳細</a
-      >
-    </nav>
-    <div id="header">
-      <h1>データモデル (Data Model)</h1>
-      <h2>task-management</h2>
-    </div>
-    <div id="content">
-      <div class="toc">
-        <h2>目次</h2>
-        <ul>
-          <li><a href="data-model.html">5. データモデル</a></li>
-          <li>
-            <a href="sample-code.html">6. サンプルコード</a>
-          </li>
-        </ul>
-      </div>
-      <div class="sect1">
-        <h2 id="_5_データモデル">5. データモデル</h2>
-        <div class="sect2">
-          <h3 id="_5_1_データベース構造">5.1 データベース構造</h3>
-          <div class="paragraph">
-            <p>
-              データベースの構造を説明します。このアプリケーションのデータベースは以下のように定義されています:
-            </p>
-          </div>
-          <div class="listingblock">
-            <div class="content">
-              <pre
-                class="highlight"
-              ><code class="language-database" data-lang="database">CREATE DATABASE task_db;
+      <div class="listingblock">
+        <div class="content">
+          <pre
+            class="highlight"
+          ><code class="language-database" data-lang="database">CREATE DATABASE task_db;
 
 USE task_db;
 
@@ -75,48 +35,44 @@ CREATE TABLE tasks (
     dueDate DATETIME NOT NULL
 );
 ALTER TABLE tasks CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
-            </div>
-          </div>
-          <div class="paragraph">
-            <p>
-              このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます:
-            </p>
-          </div>
-          <div class="ulist">
-            <ul>
-              <li>
-                <p>id: 一意の識別子（自動増分、主キー）</p>
-              </li>
-              <li>
-                <p>text: タスクの内容</p>
-              </li>
-              <li>
-                <p>completed: タスクの完了状態（デフォルトは FALSE）</p>
-              </li>
-              <li>
-                <p>dueDate: タスクの期限日</p>
-              </li>
-            </ul>
-          </div>
         </div>
-        <div class="sect2">
-          <h3 id="_5_2_er_図">5.2 ER 図</h3>
-          <div class="paragraph">
-            <p>エンティティとリレーションの図を示します。</p>
-          </div>
-          <div class="imageblock">
-            <div class="content">
-              <img
-                src="../../../static/images/TaskDatabaseERDiagram.png"
-                alt="ER図"
-              />
-            </div>
-          </div>
+      </div>
+      <div class="paragraph">
+        <p>
+          このデータベース構造により、タスク管理アプリケーションで使用されるタスクデータが格納されます。各タスクには以下の項目が含まれます:
+        </p>
+      </div>
+      <div class="ulist">
+        <ul>
+          <li>
+            <p>id: 一意の識別子（自動増分、主キー）</p>
+          </li>
+          <li>
+            <p>text: タスクの内容</p>
+          </li>
+          <li>
+            <p>completed: タスクの完了状態（デフォルトは FALSE）</p>
+          </li>
+          <li>
+            <p>dueDate: タスクの期限日</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="sect2">
+      <h3 id="_5_2_er_図">5.2 ER 図</h3>
+      <div class="paragraph">
+        <p>エンティティとリレーションの図を示します。</p>
+      </div>
+      <div class="imageblock">
+        <div class="content">
+          <img
+            src="../../../static/images/TaskDatabaseERDiagram.png"
+            alt="ER図"
+          />
         </div>
       </div>
     </div>
-    <div id="footer">
-      <!-- ...existing code... -->
-    </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}
