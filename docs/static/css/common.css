@@ -1865,9 +1865,10 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover {
-  background-color: #ddd;
-  color: black;
+nav a:hover,
+#main-nav .dropdown .dropbtn:hover,
+#main-nav .dropdown-content a:hover {
+  color: rgba(255, 0, 0, 1);
 }
 
 .content {
