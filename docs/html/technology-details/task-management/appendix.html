@@ -1,143 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Asciidoctor 2.0.23" />
-    <title>詳細設計 (Detailed Design)</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
-    />
-    <link rel="stylesheet" href="../../../static/css/common.css" />
-  </head>
-  <body class="article">
-    <nav id="main-nav">
-      <a href="../../home/index.html">ホーム</a>
-      <div class="dropdown">
-        <a class="dropbtn">要件定義・基本設計</a>
-        <div class="dropdown-content">
-          <a href="../../requirements_and_design/task-management/index.html"
-            >タスク管理</a
-          >
-          <a href="../../requirements_and_design/featureA/index.html">機能A</a>
-        </div>
+{% extends "templates/base.html" %} {% block content %}
+<div id="header">
+  <h1>付録 (Appendix)</h1>
+</div>
+<div id="content">
+  <div class="toc">
+    <h2>目次</h2>
+    <ul>
+      <li>
+        <a href="technology-details.html">7. 使用技術の詳細</a>
+      </li>
+      <li><a href="appendix.html">8. 付録</a></li>
+      <li><a href="conclusion.html">9. 結論</a></li>
+    </ul>
+  </div>
+  <div class="sect2">
+    <h3 id="_8_付録">8. 付録</h3>
+    <div class="sect3">
+      <h4 id="_8_1_用語集">8.1 用語集</h4>
+      <div class="paragraph">
+        <p>
+          このセクションでは、プロジェクトで使用される専門用語や略語の定義を記述します。
+        </p>
       </div>
-      <div class="dropdown">
-        <a class="dropbtn">詳細設計</a>
-        <div class="dropdown-content">
-          <a href="../../detailed-design/task-management/index.html"
-            >タスク管理</a
-          >
-          <a href="../../detailed-design/featureA/index.html">機能A</a>
-        </div>
-      </div>
-
-      <a href="../../technology-details/task-management/index.html"
-        >使用技術の詳細</a
-      >
-    </nav>
-    <div id="header">
-      <h1>付録 (Appendix)</h1>
-    </div>
-    <div id="content">
-      <div class="toc">
-        <h2>目次</h2>
+      <div class="ulist">
         <ul>
           <li>
-            <a href="technology-details.html">7. 使用技術の詳細</a>
+            <p>
+              SSR (サーバーサイドレンダリング):
+              サーバー側でコンテンツをレンダリングし、クライアントに送信する技術。
+            </p>
           </li>
-          <li><a href="appendix.html">8. 付録</a></li>
-          <li><a href="conclusion.html">9. 結論</a></li>
+          <li>
+            <p>
+              SSG (静的サイト生成): 事前に静的な HTML
+              ページを生成し、サーバーに配置する技術。
+            </p>
+          </li>
+          <li>
+            <p>
+              CRUD: Create, Read, Update, Delete
+              の略で、データベース操作の基本的な操作を指す。
+            </p>
+          </li>
+          <li>
+            <p>
+              API (アプリケーションプログラミングインターフェイス):
+              アプリケーション同士が通信するためのインターフェース。タスクデータの取得や更新に使用。
+            </p>
+          </li>
+          <li>
+            <p>
+              DOM: Document Object Model の略で、HTML や XML
+              文書をプログラムから操作するための仕組み。
+            </p>
+          </li>
         </ul>
       </div>
-      <div class="sect2">
-        <h3 id="_8_付録">8. 付録</h3>
-        <div class="sect3">
-          <h4 id="_8_1_用語集">8.1 用語集</h4>
-          <div class="paragraph">
+    </div>
+    <div class="sect3">
+      <h4 id="_8_2_参考資料">8.2 参考資料</h4>
+      <div class="paragraph">
+        <p>
+          プロジェクトの設計や実装に参考にした書籍、論文、ウェブサイトなどの資料を一覧化します。
+        </p>
+      </div>
+      <div class="ulist">
+        <ul>
+          <li>
             <p>
-              このセクションでは、プロジェクトで使用される専門用語や略語の定義を記述します。
+              <a href="https://nuxt.com/docs">Nuxt.js 公式ドキュメント</a>
             </p>
-          </div>
-          <div class="ulist">
-            <ul>
-              <li>
-                <p>
-                  SSR (サーバーサイドレンダリング):
-                  サーバー側でコンテンツをレンダリングし、クライアントに送信する技術。
-                </p>
-              </li>
-              <li>
-                <p>
-                  SSG (静的サイト生成): 事前に静的な HTML
-                  ページを生成し、サーバーに配置する技術。
-                </p>
-              </li>
-              <li>
-                <p>
-                  CRUD: Create, Read, Update, Delete
-                  の略で、データベース操作の基本的な操作を指す。
-                </p>
-              </li>
-              <li>
-                <p>
-                  API (アプリケーションプログラミングインターフェイス):
-                  アプリケーション同士が通信するためのインターフェース。タスクデータの取得や更新に使用。
-                </p>
-              </li>
-              <li>
-                <p>
-                  DOM: Document Object Model の略で、HTML や XML
-                  文書をプログラムから操作するための仕組み。
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="sect3">
-          <h4 id="_8_2_参考資料">8.2 参考資料</h4>
-          <div class="paragraph">
+          </li>
+          <li>
             <p>
-              プロジェクトの設計や実装に参考にした書籍、論文、ウェブサイトなどの資料を一覧化します。
+              <a href="https://vuejs.org/guide/introduction.html"
+                >Vue.js 公式ガイド</a
+              >
             </p>
-          </div>
-          <div class="ulist">
-            <ul>
-              <li>
-                <p>
-                  <a href="https://nuxt.com/docs">Nuxt.js 公式ドキュメント</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="https://vuejs.org/guide/introduction.html"
-                    >Vue.js 公式ガイド</a
-                  >
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="https://flask.palletsprojects.com/en/latest/"
-                    >Flask 公式ドキュメント</a
-                  >
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href="https://dev.mysql.com/doc/"
-                    >MySQL 公式ドキュメント</a
-                  >
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
+          </li>
+          <li>
+            <p>
+              <a href="https://flask.palletsprojects.com/en/latest/"
+                >Flask 公式ドキュメント</a
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://dev.mysql.com/doc/">MySQL 公式ドキュメント</a>
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
-    <div id="footer">
-      <!-- ...existing code... -->
-    </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}

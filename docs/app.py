@@ -1,4 +1,5 @@
 from flask import Flask, render_template, send_from_directory
+from functools import partial
 
 app = Flask(__name__, static_folder='static', template_folder='html')
 
@@ -10,18 +11,22 @@ def home():
 def static_files(path):
     return send_from_directory('html', path)
 
-@app.route('/detailed-design/task-management/index.html')
-def detailed_design_index():
-    return render_template('detailed-design/task-management/index.html')
+def render_task_management(template_path, filename):
+    return render_template(f'{template_path}/task-management/{filename}')
 
-@app.route('/detailed-design/task-management/data-model.html')
-def data_model():
-    return render_template('detailed-design/task-management/data-model.html')
+# 動的にルートを生成
+task_management_routes = [
+    'detailed-design',
+    'requirements_and_design',
+    'technology-details'
+]
 
-@app.route('/detailed-design/task-management/sample-code.html')
-def sample_code():
-    return render_template('detailed-design/task-management/sample-code.html')
-
+for route in task_management_routes:
+    app.add_url_rule(
+        f'/{route}/task-management/<filename>',
+        endpoint=f'task_management_{route.replace("-", "_")}', 
+        view_func=partial(render_task_management, route)
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)
