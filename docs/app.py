@@ -30,13 +30,15 @@ def add_dynamic_routes(routes, base_paths, view_func):
 task_management_routes = [
     'detailed-design',
     'requirements_and_design',
-    'technology-details'
+    'technology-details',
+    'home'
 ]
 
 # base_pathのリスト
 base_paths = [
     'task-management',
-    'featureA'
+    'featureA',
+    ''
 ]
 
 # 動的にルートを追加
