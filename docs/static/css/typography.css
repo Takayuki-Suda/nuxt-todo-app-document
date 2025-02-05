@@ -1,0 +1,273 @@
+/* タイトルやテキスト関連 */
+.subheader,
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
+  line-height: 1.45;
+  color: #7a2518;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+/* ヘッダーのスタイル */
+h1,
+h2,
+h3,
+#toctitle,
+.sidebarblock > .content > .title,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", "DejaVu Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #ba3925;
+  text-rendering: optimizeLegibility;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.0125em;
+}
+
+h1 small,
+h2 small,
+h3 small,
+#toctitle small,
+.sidebarblock > .content > .title small,
+h4 small,
+h5 small,
+h6 small {
+  font-size: 60%;
+  color: #e99b8f;
+  line-height: 0;
+}
+
+h1 {
+  font-size: 2.125em;
+}
+
+h2 {
+  font-size: 1.6875em;
+}
+
+h3,
+#toctitle,
+.sidebarblock > .content > .title {
+  font-size: 1.375em;
+}
+
+h4,
+h5 {
+  font-size: 1.125em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+/* コード */
+code {
+  font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+}
+/* ヘッダーのスタイル */
+h1,
+h2,
+h3,
+#toctitle,
+.sidebarblock > .content > .title,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  word-spacing: -0.05em;
+}
+
+h1 strong,
+h2 strong,
+h3 strong,
+#toctitle strong,
+.sidebarblock > .content > .title strong,
+h4 strong,
+h5 strong,
+h6 strong {
+  font-weight: 400;
+}
+.big {
+  font-size: larger;
+}
+.small {
+  font-size: smaller;
+}
+.underline {
+  text-decoration: underline;
+}
+.overline {
+  text-decoration: overline;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.aqua {
+  color: #00bfbf;
+}
+.aqua-background {
+  background: #00fafa;
+}
+.black {
+  color: #000;
+}
+.black-background {
+  background: #000;
+}
+.blue {
+  color: #0000bf;
+}
+.blue-background {
+  background: #0000fa;
+}
+.fuchsia {
+  color: #bf00bf;
+}
+.fuchsia-background {
+  background: #fa00fa;
+}
+.gray {
+  color: #606060;
+}
+.gray-background {
+  background: #7d7d7d;
+}
+.green {
+  color: #006000;
+}
+.green-background {
+  background: #007d00;
+}
+.lime {
+  color: #00bf00;
+}
+.lime-background {
+  background: #00fa00;
+}
+.maroon {
+  color: #600000;
+}
+.maroon-background {
+  background: #7d0000;
+}
+.navy {
+  color: #000060;
+}
+.navy-background {
+  background: #00007d;
+}
+.olive {
+  color: #606000;
+}
+.olive-background {
+  background: #7d7d00;
+}
+.purple {
+  color: #600060;
+}
+.purple-background {
+  background: #7d007d;
+}
+.red {
+  color: #bf0000;
+}
+.red-background {
+  background: #fa0000;
+}
+.silver {
+  color: #909090;
+}
+.silver-background {
+  background: #bcbcbc;
+}
+.teal {
+  color: #006060;
+}
+.teal-background {
+  background: #007d7d;
+}
+.white {
+  color: #bfbfbf;
+}
+.white-background {
+  background: #fafafa;
+}
+.yellow {
+  color: #bfbf00;
+}
+.yellow-background {
+  background: #fafa00;
+}
+/* 読みやすさの最適化 */
+dt,
+th.tableblock,
+td.content,
+div.footnote {
+  text-rendering: optimizeLegibility;
+}
+
+/* 文字の間隔調整 */
+h1,
+h2,
+p,
+td.content,
+span.alt,
+summary {
+  letter-spacing: -0.01em;
+}
+p strong,
+td.content strong,
+div.footnote strong {
+  letter-spacing: -0.005em;
+}
+/* テキストのサイズ */
+p,
+blockquote,
+dt,
+td.content,
+td.hdlist1,
+span.alt,
+summary {
+  font-size: 1.0625rem;
+}
+p {
+  margin-bottom: 1.25rem;
+}
+
+/* サイドバーのフォントサイズ */
+.sidebarblock p,
+.sidebarblock dt,
+.sidebarblock td.content,
+p.tableblock {
+  font-size: 1em;
+}
+@media amzn-kf8 {
+  #header,
+  #content,
+  #footnotes,
+  #footer {
+    padding: 0;
+  }
+}
