@@ -1,0 +1,7 @@
+/* 画像・オブジェクトのレスポンシブ対応 */
+img,
+object,
+embed {
+  max-width: 100%;
+  height: auto;
+}

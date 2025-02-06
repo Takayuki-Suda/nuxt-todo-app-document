@@ -1,0 +1,148 @@
+/* 印刷用のページマージン設定 */
+@page {
+  margin: 1.25cm 0.75cm;
+}
+
+@media print {
+  /* ボックスシャドウやテキストシャドウを除去 */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* フォントサイズ調整 */
+  html {
+    font-size: 80%;
+  }
+
+  /* リンクの表示 */
+  a {
+    color: inherit !important;
+    text-decoration: underline !important;
+  }
+  a.bare,
+  a[href^="#"],
+  a[href^="mailto:"] {
+    text-decoration: none !important;
+  }
+  a[href^="http:"]:not(.bare)::after,
+  a[href^="https:"]:not(.bare)::after {
+    content: "(" attr(href) ")";
+    font-size: 0.875em;
+    padding-left: 0.25em;
+  }
+
+  /* 略語のタイトルを表示 */
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /* ページ内で途切れない要素 */
+  pre,
+  blockquote,
+  tr,
+  img,
+  object,
+  svg {
+    page-break-inside: avoid;
+  }
+
+  /* テーブルヘッダーを各ページの先頭に */
+  thead {
+    display: table-header-group;
+  }
+
+  /* SVGの最大幅を調整 */
+  svg {
+    max-width: 100%;
+  }
+
+  /* 見出しや特定要素の改ページを制御 */
+  h2,
+  h3,
+  #toctitle,
+  .sidebarblock > .content > .title {
+    page-break-after: avoid;
+  }
+
+  /* 印刷時の背景削除 */
+  #toc,
+  .sidebarblock,
+  .exampleblock > .content {
+    background: none !important;
+  }
+  #toc {
+    border-bottom: 1px solid #dddddf !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* 書籍用レイアウト */
+  body.book #header {
+    text-align: center;
+  }
+  body.book #header > h1:first-child {
+    border: 0 !important;
+    margin: 2.5em 0 1em;
+  }
+  body.book #header .details {
+    display: block;
+  }
+  body.book #header .details br {
+    display: block;
+  }
+  body.book #header .details br + span::before {
+    content: none !important;
+  }
+  body.book #toc {
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  body.book #toc,
+  body.book #preamble,
+  body.book h1.sect0,
+  body.book .sect1 > h2 {
+    page-break-before: always;
+  }
+
+  /* コードブロックの言語ラベル */
+  .listingblock code[data-lang]::before {
+    display: block;
+  }
+
+  /* フッターの余白調整 */
+  #footer {
+    padding: 0 0.9375em;
+  }
+
+  /* 印刷用/非印刷用のクラス */
+  .hide-on-print,
+  .hide-for-print {
+    display: none !important;
+  }
+  .print-only,
+  .show-for-print {
+    display: block !important;
+  }
+
+  /* 追加の印刷時調整 */
+  #header > h1:first-child {
+    margin-top: 1.25rem;
+  }
+  .sect1 {
+    padding: 0 !important;
+  }
+  .sect1 + .sect1 {
+    border: 0;
+  }
+  #footer {
+    background: none;
+  }
+  #footer-text {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.9em;
+  }
+}

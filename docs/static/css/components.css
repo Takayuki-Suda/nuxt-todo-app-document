@@ -1,788 +1,198 @@
-/* フォームやコンポーネント関連 */
-textarea {
-  height: auto;
-  min-height: 50px;
-}
+/* =======================
+   テーブルのスタイル (table.css)
+======================= */
 
-select {
-  width: 100%;
-}
-/* コードとキーボード入力 */
-pre {
-  color: rgba(0, 0, 0, 0.9);
-  font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
-  line-height: 1.45;
-  text-rendering: optimizeSpeed;
-}
-
-pre code,
-pre pre {
-  color: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-pre > code {
-  display: block;
-}
-
-pre.nowrap,
-pre.nowrap pre {
-  white-space: pre;
-  word-wrap: normal;
-}
-
-kbd {
-  font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
-  display: inline-block;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 0.65em;
-  line-height: 1.45;
-  background: #f7f7f7;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 0.1em #fff;
-  margin: 0 0.15em;
-  padding: 0.2em 0.5em;
-  vertical-align: middle;
-  position: relative;
-  top: -0.1em;
-  white-space: nowrap;
-}
-.keyseq kbd:first-child {
-  margin-left: 0;
-}
-.keyseq kbd:last-child {
-  margin-right: 0;
-}
-/* 目次（TOC）関連のスタイル */
-#toc {
-  border-bottom: 1px solid #e7e7e9;
-  padding-bottom: 0.5em;
-}
-
-#toc > ul {
-  margin-left: 0.125em;
-}
-
-#toc ul.sectlevel0 > li > a {
-  font-style: italic;
-}
-
-#toc ul.sectlevel0 ul.sectlevel1 {
-  margin: 0.5em 0;
-}
-
-#toc ul {
-  font-family: "Open Sans", "DejaVu Sans", sans-serif;
-  list-style-type: none;
-}
-
-#toc li {
-  line-height: 1.3334;
-  margin-top: 0.3334em;
-}
-
-#toc a {
-  text-decoration: none;
-}
-
-#toc a:active {
-  text-decoration: underline;
-}
-/* フッターとコンテンツ内の目次 */
-#content #toc {
-  border: 1px solid #e0e0dc;
+/* テーブル全体のスタイル */
+table {
+  border: 1px solid #dedede;
+  background: #fff;
   margin-bottom: 1.25em;
-  padding: 1.25em;
+  word-wrap: normal;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* テーブルヘッダーとフッターの背景色 */
+table thead,
+table tfoot {
+  background: #f7f8f7;
+}
+
+/* ヘッダーとフッターのセルのスタイル */
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td {
+  padding: 0.5em 0.625em 0.625em;
+  font-size: inherit;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: left;
+}
+
+/* テーブルのセルスタイル */
+table tr th,
+table tr td {
+  padding: 0.5625em 0.625em;
+  font-size: inherit;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* 奇数・偶数行の背景色 */
+table tr.even,
+table tr.alt {
   background: #f8f8f7;
-  border-radius: 4px;
 }
 
-#footer {
-  max-width: none;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 1.25em;
-}
-
-#footer-text {
-  color: hsla(0, 0%, 100%, 0.8);
-  line-height: 1.44;
-}
-/* アンカーリンクのスタイル */
-#content h1 > a.anchor,
-h2 > a.anchor,
-h3 > a.anchor,
-#toctitle > a.anchor,
-.sidebarblock > .content > .title > a.anchor,
-h4 > a.anchor,
-h5 > a.anchor,
-h6 > a.anchor {
-  position: absolute;
-  z-index: 1001;
-  width: 1.5ex;
-  margin-left: -1.5ex;
-  display: block;
-  text-decoration: none !important;
-  visibility: hidden;
-  text-align: center;
-  font-weight: 400;
-}
-.admonitionblock td.content > .title,
-.audioblock > .title,
-.exampleblock > .title,
-.imageblock > .title,
-.listingblock > .title,
-.literalblock > .title,
-.stemblock > .title,
-.openblock > .title,
-.paragraph > .title,
-.quoteblock > .title,
-table.tableblock > .title,
-.verseblock > .title,
-.videoblock > .title,
-.dlist > .title,
-.olist > .title,
-.ulist > .title,
-.qlist > .title,
-.hdlist > .title {
-  text-rendering: optimizeLegibility;
-  text-align: left;
-  font-family: "Noto Serif", "DejaVu Serif", serif;
-  font-size: 1rem;
-  font-style: italic;
-}
-
-.literalblock pre,
-.listingblock > .content > pre {
-  padding: 1em;
-}
-@media screen and (min-width: 768px) {
-  .literalblock pre,
-  .listingblock > .content > pre {
-    font-size: 0.90625em;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .literalblock pre,
-  .listingblock > .content > pre {
-    font-size: 1em;
-  }
-}
-.literalblock pre,
-.listingblock > .content > pre:not(.highlight),
-.listingblock > .content > pre[class="highlight"],
-.listingblock > .content > pre[class^="highlight "] {
-  background: #f7f7f8;
-}
-.literalblock.output pre {
-  color: #f7f7f8;
-  background: rgba(0, 0, 0, 0.9);
-}
-.listingblock > .content {
-  position: relative;
-}
-.listingblock code[data-lang]::before {
-  display: none;
-  content: attr(data-lang);
-  position: absolute;
-  font-size: 0.75em;
-  top: 0.425rem;
-  right: 0.5rem;
-  line-height: 1;
-  text-transform: uppercase;
-  color: inherit;
-  opacity: 0.5;
-}
-.listingblock:hover code[data-lang]::before {
-  display: block;
-}
-.listingblock.terminal pre .command::before {
-  content: attr(data-prompt);
-  padding-right: 0.5em;
-  color: inherit;
-  opacity: 0.5;
-}
-.listingblock.terminal pre .command:not([data-prompt])::before {
-  content: "$";
-}
-.listingblock pre.highlightjs {
-  padding: 0;
-}
-.listingblock pre.highlightjs > code {
-  padding: 1em;
-  border-radius: 4px;
-}
-.listingblock pre.prettyprint {
-  border-width: 0;
-}
-.prettyprint {
-  background: #f7f7f8;
-}
-pre.prettyprint .linenums {
-  line-height: 1.45;
-  margin-left: 2em;
-}
-pre.prettyprint li {
-  background: none;
-  list-style-type: inherit;
-  padding-left: 0;
-}
-pre.prettyprint li code[data-lang]::before {
-  opacity: 1;
-}
-pre.prettyprint li:not(:first-child) code[data-lang]::before {
-  display: none;
-}
-table.linenotable {
-  border-collapse: separate;
-  border: 0;
-  margin-bottom: 0;
-  background: none;
-}
-table.linenotable td[class] {
-  color: inherit;
-  vertical-align: top;
-  padding: 0;
-  line-height: inherit;
-  white-space: normal;
-}
-table.linenotable td.code {
-  padding-left: 0.75em;
-}
-table.linenotable td.linenos,
-pre.pygments .linenos {
-  border-right: 1px solid;
-  opacity: 0.35;
-  padding-right: 0.5em;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-pre.pygments span.linenos {
-  display: inline-block;
-  margin-right: 0.75em;
-}
-.quoteblock {
-  margin: 0 1em 1.25em 1.5em;
-  display: table;
-}
-.quoteblock:not(.excerpt) > .title {
-  margin-left: -1.5em;
-  margin-bottom: 0.75em;
-}
-.quoteblock blockquote,
-.quoteblock p {
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 1.15rem;
-  line-height: 1.75;
-  word-spacing: 0.1em;
-  letter-spacing: 0;
-  font-style: italic;
-  text-align: justify;
-}
-.quoteblock blockquote {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.quoteblock blockquote::before {
-  content: "\201c";
-  float: left;
-  font-size: 2.75em;
-  font-weight: bold;
-  line-height: 0.6em;
-  margin-left: -0.6em;
-  color: #7a2518;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-.quoteblock blockquote > .paragraph:last-child p {
-  margin-bottom: 0;
-}
-.quoteblock .attribution {
-  margin-top: 0.75em;
-  margin-right: 0.5ex;
-  text-align: right;
-}
-.verseblock {
-  margin: 0 1em 1.25em;
-}
-.verseblock pre {
-  font-family: "Open Sans", "DejaVu Sans", sans-serif;
-  font-size: 1.15rem;
-  color: rgba(0, 0, 0, 0.85);
-  font-weight: 300;
-  text-rendering: optimizeLegibility;
-}
-.verseblock pre strong {
-  font-weight: 400;
-}
-.verseblock .attribution {
-  margin-top: 1.25rem;
-  margin-left: 0.5ex;
-}
-.quoteblock .attribution,
-.verseblock .attribution {
-  font-size: 0.9375em;
-  line-height: 1.45;
-  font-style: italic;
-}
-.quoteblock .attribution br,
-.verseblock .attribution br {
-  display: none;
-}
-.quoteblock .attribution cite,
-.verseblock .attribution cite {
-  display: block;
-  letter-spacing: -0.025em;
-  color: rgba(0, 0, 0, 0.6);
-}
-.quoteblock.abstract blockquote::before,
-.quoteblock.excerpt blockquote::before,
-.quoteblock .quoteblock blockquote::before {
-  display: none;
-}
-.quoteblock.abstract blockquote,
-.quoteblock.abstract p,
-.quoteblock.excerpt blockquote,
-.quoteblock.excerpt p,
-.quoteblock .quoteblock blockquote,
-.quoteblock .quoteblock p {
+/* セル内の行間 */
+table thead tr th,
+table tfoot tr th,
+table tbody tr td,
+table tr td,
+table tfoot tr td {
   line-height: 1.6;
-  word-spacing: 0;
 }
-.quoteblock.abstract {
-  margin: 0 1em 1.25em;
-  display: block;
-}
-.quoteblock.abstract > .title {
-  margin: 0 0 0.375em;
-  font-size: 1.15em;
-  text-align: center;
-}
-.quoteblock.excerpt > blockquote,
-.quoteblock .quoteblock {
-  padding: 0 0 0.25em 1em;
-  border-left: 0.25em solid #dddddf;
-}
-.quoteblock.excerpt,
-.quoteblock .quoteblock {
-  margin-left: 0;
-}
-.quoteblock.excerpt blockquote,
-.quoteblock.excerpt p,
-.quoteblock .quoteblock blockquote,
-.quoteblock .quoteblock p {
-  color: inherit;
-  font-size: 1.0625rem;
-}
-.quoteblock.excerpt .attribution,
-.quoteblock .quoteblock .attribution {
-  color: inherit;
-  font-size: 0.85rem;
-  text-align: left;
-  margin-right: 0;
-}
-p.tableblock:last-child {
-  margin-bottom: 0;
-}
+
+/* =======================
+   テーブルのレイアウト (table-layout.css)
+======================= */
+
+/* tableblock クラスを持つセルの設定 */
 td.tableblock > .content {
   margin-bottom: 1.25em;
   word-wrap: anywhere;
 }
+
+/* tableblock の最後の要素のマージン調整 */
 td.tableblock > .content > :last-child {
   margin-bottom: -1.25em;
 }
+
+/* テーブルフレームの設定 */
 table.tableblock,
 th.tableblock,
 td.tableblock {
   border: 0 solid #dedede;
 }
+
+/* グリッドテーブル全体のセルにボーダーを追加 */
 table.grid-all > * > tr > * {
   border-width: 1px;
 }
-table.grid-cols > * > tr > * {
-  border-width: 0 1px;
-}
-table.grid-rows > * > tr > * {
-  border-width: 1px 0;
-}
+
+/* フレーム全体にボーダー */
 table.frame-all {
   border-width: 1px;
 }
-table.frame-ends {
-  border-width: 1px 0;
-}
-table.frame-sides {
-  border-width: 0 1px;
-}
-table.frame-none > colgroup + * > :first-child > *,
-table.frame-sides > colgroup + * > :first-child > * {
-  border-top-width: 0;
-}
-table.frame-none > :last-child > :last-child > *,
-table.frame-sides > :last-child > :last-child > * {
-  border-bottom-width: 0;
-}
+
+/* 一部のテーブルのフレーム設定 */
 table.frame-none > * > tr > :first-child,
 table.frame-ends > * > tr > :first-child {
   border-left-width: 0;
 }
-table.frame-none > * > tr > :last-child,
-table.frame-ends > * > tr > :last-child {
-  border-right-width: 0;
-}
+
+/* ストライプ効果を持つテーブル */
 table.stripes-all > * > tr,
 table.stripes-odd > * > tr:nth-of-type(odd),
 table.stripes-even > * > tr:nth-of-type(even),
 table.stripes-hover > * > tr:hover {
   background: #f8f8f7;
 }
-th.halign-left,
-td.halign-left {
-  text-align: left;
+
+/* =======================
+   ナビゲーションバー (navigation.css)
+======================= */
+
+/* ナビゲーションバーの背景色 */
+nav {
+  background-color: #333;
 }
-th.halign-right,
-td.halign-right {
-  text-align: right;
+
+/* ナビゲーションリンクの基本スタイル */
+nav a {
+  float: left;
+  display: block;
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
 }
-th.halign-center,
-td.halign-center {
-  text-align: center;
+
+/* ナビゲーションリンクのホバー時のスタイル */
+nav a:hover {
+  color: rgba(255, 0, 0, 1);
 }
-th.valign-top,
-td.valign-top {
-  vertical-align: top;
+
+/* ドロップダウンメニューのリンク */
+#main-nav .dropdown .dropbtn:hover,
+#main-nav .dropdown-content a:hover {
+  color: rgba(255, 0, 0, 1);
 }
-th.valign-bottom,
-td.valign-bottom {
-  vertical-align: bottom;
-}
-th.valign-middle,
-td.valign-middle {
-  vertical-align: middle;
-}
-table thead th,
-table tfoot th {
-  font-weight: bold;
-}
-tbody tr th {
-  background: #f7f8f7;
-}
-tbody tr th,
-tbody tr th p,
-tfoot tr th,
-tfoot tr th p {
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: bold;
-}
-p.tableblock > code:only-child {
-  background: none;
-  padding: 0;
-}
-p.tableblock {
-  font-size: 1em;
-}
-ol {
-  margin-left: 1.75em;
-}
-ul li ol {
-  margin-left: 1.5em;
-}
-dl dd {
-  margin-left: 1.125em;
-}
-dl dd:last-child,
-dl dd:last-child > :last-child {
-  margin-bottom: 0;
-}
-li p,
-ul dd,
-ol dd,
-.olist .olist,
-.ulist .ulist,
-.ulist .olist,
-.olist .ulist {
-  margin-bottom: 0.625em;
-}
-ul.checklist,
-ul.none,
-ol.none,
-ul.no-bullet,
-ol.no-bullet,
-ol.unnumbered,
-ul.unstyled,
-ol.unstyled {
-  list-style-type: none;
-}
-ul.no-bullet,
-ol.no-bullet,
-ol.unnumbered {
-  margin-left: 0.625em;
-}
-ul.unstyled,
-ol.unstyled {
-  margin-left: 0;
-}
-li > p:empty:only-child::before {
-  content: "";
-  display: inline-block;
-}
-ul.checklist > li > p:first-child {
-  margin-left: -1em;
-}
-ul.checklist > li > p:first-child > .fa-square-o:first-child,
-ul.checklist > li > p:first-child > .fa-check-square-o:first-child {
-  width: 1.25em;
-  font-size: 0.8em;
-  position: relative;
-  bottom: 0.125em;
-}
-ul.checklist > li > p:first-child > input[type="checkbox"]:first-child {
-  margin-right: 0.25em;
-}
-ul.inline {
+
+/* メインナビゲーションのスタイル */
+#main-nav {
   display: flex;
-  flex-flow: row wrap;
-  list-style: none;
-  margin: 0 0 0.625em -1.25em;
-}
-ul.inline > li {
-  margin-left: 1.25em;
-}
-.unstyled dl dt {
-  font-weight: 400;
-  font-style: normal;
-}
-ol.arabic {
-  list-style-type: decimal;
-}
-ol.decimal {
-  list-style-type: decimal-leading-zero;
-}
-ol.loweralpha {
-  list-style-type: lower-alpha;
-}
-ol.upperalpha {
-  list-style-type: upper-alpha;
-}
-ol.lowerroman {
-  list-style-type: lower-roman;
-}
-ol.upperroman {
-  list-style-type: upper-roman;
-}
-ol.lowergreek {
-  list-style-type: lower-greek;
-}
-.hdlist > table,
-.colist > table {
-  border: 0;
-  background: none;
-}
-.hdlist > table > tbody > tr,
-.colist > table > tbody > tr {
-  background: none;
-}
-td.hdlist1,
-td.hdlist2 {
-  vertical-align: top;
-  padding: 0 0.625em;
-}
-td.hdlist1 {
-  font-weight: bold;
-  padding-bottom: 1.25em;
-}
-td.hdlist2 {
-  word-wrap: anywhere;
-}
-.literalblock + .colist,
-.listingblock + .colist {
-  margin-top: -0.5em;
-}
-.colist td:not([class]):first-child {
-  padding: 0.4em 0.75em 0;
-  line-height: 1;
-  vertical-align: top;
-}
-.colist td:not([class]):first-child img {
-  max-width: none;
-}
-.colist td:not([class]):last-child {
-  padding: 0.25em 0;
-}
-.thumb,
-.th {
-  line-height: 0;
-  display: inline-block;
-  border: 4px solid #fff;
-  box-shadow: 0 0 0 1px #ddd;
-}
-.imageblock.left {
-  margin: 0.25em 0.625em 1.25em 0;
-}
-.imageblock.right {
-  margin: 0.25em 0 1.25em 0.625em;
-}
-.imageblock > .title {
-  margin-bottom: 0;
-}
-.imageblock.thumb,
-.imageblock.th {
-  border-width: 6px;
-}
-.imageblock.thumb > .title,
-.imageblock.th > .title {
-  padding: 0 0.125em;
-}
-.image.left,
-.image.right {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-  display: inline-block;
-  line-height: 0;
-}
-.image.left {
-  margin-right: 0.625em;
-}
-.image.right {
-  margin-left: 0.625em;
-}
-a.image {
-  text-decoration: none;
-  display: inline-block;
-}
-a.image object {
-  pointer-events: none;
-}
-sup.footnote,
-sup.footnoteref {
-  font-size: 0.875em;
-  position: static;
-  vertical-align: super;
-}
-sup.footnote a,
-sup.footnoteref a {
-  text-decoration: none;
-}
-sup.footnote a:active,
-sup.footnoteref a:active,
-#footnotes .footnote a:first-of-type:active {
-  text-decoration: underline;
-}
-#footnotes {
-  padding-top: 0.75em;
-  padding-bottom: 0.75em;
-  margin-bottom: 0.625em;
-}
-#footnotes hr {
-  width: 20%;
-  min-width: 6.25em;
-  margin: -0.25em 0 0.75em;
-  border-width: 1px 0 0;
-}
-#footnotes .footnote {
-  padding: 0 0.375em 0 0.225em;
-  line-height: 1.3334;
-  font-size: 0.875em;
-  margin-left: 1.2em;
-  margin-bottom: 0.2em;
-}
-#footnotes .footnote a:first-of-type {
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: -1.05em;
-}
-#footnotes .footnote:last-of-type {
-  margin-bottom: 0;
-}
-#content #footnotes {
-  margin-top: -0.625em;
-  margin-bottom: 0;
-  padding: 0.75em 0;
-}
-div.unbreakable {
-  page-break-inside: avoid;
-}
-/* アイコン関連 */
-span.icon > .fa {
-  cursor: default;
-}
-a span.icon > .fa {
-  cursor: inherit;
-}
-
-/* Admonition（警告・ヒントなどのアイコン） */
-.admonitionblock td.icon [class^="fa icon-"] {
-  font-size: 2.5em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  cursor: default;
-}
-.admonitionblock td.icon .icon-note::before {
-  content: "\f05a";
-  color: #19407c;
-}
-.admonitionblock td.icon .icon-tip::before {
-  content: "\f0eb";
-  text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
-  color: #111;
-}
-.admonitionblock td.icon .icon-warning::before {
-  content: "\f071";
-  color: #bf6900;
-}
-.admonitionblock td.icon .icon-caution::before {
-  content: "\f06d";
-  color: #bf3400;
-}
-.admonitionblock td.icon .icon-important::before {
-  content: "\f06a";
-  color: #bf0000;
-}
-
-/* 手順番号（番号付き丸） */
-.conum[data-value] {
-  display: inline-block;
-  color: #fff !important;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 50%;
-  text-align: center;
-  font-size: 0.75em;
-  width: 1.67em;
-  height: 1.67em;
-  line-height: 1.67em;
-  font-family: "Open Sans", "DejaVu Sans", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-}
-.conum[data-value] * {
-  color: #fff !important;
-}
-.conum[data-value] + b {
-  display: none;
-}
-.conum[data-value]::after {
-  content: attr(data-value);
-}
-pre .conum[data-value] {
+  align-items: center;
   position: relative;
-  top: -0.125em;
-}
-b.conum * {
-  color: inherit !important;
-}
-.conum:not([data-value]):empty {
-  display: none;
-}
-/* 例示ブロックのデザイン */
-.exampleblock > .content {
-  background: #fffef7;
-  border-color: #e0e0dc;
-  box-shadow: 0 1px 4px #e0e0dc;
+  background-color: #333;
+  padding: 10px;
+  z-index: 1000;
 }
 
-/* 印刷時に非表示 */
-.print-only {
-  display: none !important;
+/* ドロップダウンのスタイル */
+#main-nav .dropdown {
+  position: relative;
+}
+
+#main-nav .dropdown .dropbtn {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: white;
+  background-color: #333;
+}
+
+/* ドロップダウンメニュー */
+#main-nav .dropdown-content {
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+/* ドロップダウンメニューのリンク */
+#main-nav .dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  width: 100%;
+}
+
+/* ドロップダウンメニューのホバー時 */
+#main-nav .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* ドロップダウンメニューの表示 */
+#main-nav .dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =======================
+   メインコンテンツの余白 (content.css)
+======================= */
+
+/* メインコンテンツの余白設定 */
+.content {
+  padding-left: 10%;
 }

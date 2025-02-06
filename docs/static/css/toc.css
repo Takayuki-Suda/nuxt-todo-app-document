@@ -1,0 +1,22 @@
+/* 目次（TOC）のスタイル */
+#toc.toc2 {
+  margin-top: 0 !important;
+  background: #f8f8f7;
+  position: fixed;
+  width: 15em;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #e7e7e9;
+  border-top-width: 0 !important;
+  border-bottom-width: 0 !important;
+  z-index: 1000;
+  padding: 1.25em 1em;
+  height: 100%;
+  overflow: auto;
+}
+
+@media screen and (min-width: 1280px) {
+  #toc.toc2 {
+    width: 20em;
+  }
+}
