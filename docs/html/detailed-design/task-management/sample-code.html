@@ -23,6 +23,10 @@ Code){% endblock %} {% block content %}
             <pre
               class="highlight"
             ><code class="language-bash" data-lang="bash">npx nuxi init</code></pre>
+            <button class="copy-btn" onclick="copyToClipboard(this)">
+              Copy
+            </button>
+            <span class="copy-feedback">Copied!</span>
           </div>
         </div>
       </div>
@@ -79,6 +83,10 @@ button {
 margin-left: 10px;
 }
 &lt;/style&gt;</code></pre>
+            <button class="copy-btn" onclick="copyToClipboard(this)">
+              Copy
+            </button>
+            <span class="copy-feedback">Copied!</span>
           </div>
         </div>
       </div>
@@ -184,6 +192,8 @@ return jsonify({'error': 'Task not found'}), 404
 if __name__ == '__main__':
 db.create_all()
 app.run(debug=True)</code></pre>
+          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+          <span class="copy-feedback">Copied!</span>
         </div>
       </div>
     </div>

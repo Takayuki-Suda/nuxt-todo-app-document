@@ -196,3 +196,58 @@ nav a:hover {
 .content {
   padding-left: 10%;
 }
+
+/* =======================
+   コードブロックとコピーのボタンのスタイル
+======================= */
+
+.copy-btn {
+  position: absolute;
+  top: 0;
+  right: 80px;
+  border: none;
+  padding: 4.5px 10px;
+  font-size: 0.8em;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0);
+}
+
+.content:hover .copy-btn,
+.copy-btn:hover {
+  color: red;
+}
+
+.copy-feedback {
+  position: absolute;
+  top: 6px;
+  right: 140px;
+  font-size: 0.9em;
+  color: green;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.copy-feedback.show {
+  opacity: 1;
+}
+
+/* 初期状態ではテキストは非表示 */
+.copy-btn .copy-text {
+  display: none;
+}
+
+/* ボタンが hover されたときにテキストを表示 */
+.copy-btn:hover .copy-text {
+  display: inline;
+}
+
+/* アイコンとテキストを横並びに配置 */
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
