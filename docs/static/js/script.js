@@ -16,3 +16,16 @@ dropdownLinks.forEach((link) => {
     dropbtn.style.color = ""; // 初期スタイルに戻す
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const footer = document.getElementById("footer");
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        footer.classList.add("show");
+      }
+    },
+    { threshold: 0.1 }
+  );
+  observer.observe(footer);
+});
