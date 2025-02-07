@@ -1,11 +1,11 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, redirect
 from functools import partial
 
 app = Flask(__name__, static_folder='static', template_folder='html')
 
 @app.route('/')
 def home():
-    return send_from_directory('html/home', 'index.html')
+    return redirect('/home/index.html')
 
 @app.route('/<path:path>')
 def static_files(path):
