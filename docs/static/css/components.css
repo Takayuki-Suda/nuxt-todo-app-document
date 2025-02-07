@@ -104,7 +104,7 @@ table.stripes-hover > * > tr:hover {
 
 /* ナビゲーションバーの背景色 */
 nav {
-  background-color: #333;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
 }
 
 /* ナビゲーションリンクの基本スタイル */
@@ -147,7 +147,6 @@ nav a:hover {
   padding: 12px 16px;
   text-decoration: none;
   color: white;
-  background-color: #333;
 }
 
 /* ドロップダウンメニュー */
