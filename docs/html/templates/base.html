@@ -10,6 +10,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../../static/css/base.css" />
     <link rel="stylesheet" href="../../static/css/layout.css" />
     <link rel="stylesheet" href="../../static/css/typography.css" />
@@ -45,9 +49,58 @@
       >
     </nav>
     {% block content %}{% endblock %}
-    <div id="footer">
-      <div id="footer-text">Last updated 2025-01-24 17:21:48 +0900</div>
+    <div class="wrapper">
+      <footer id="footer">
+        <div class="footer-top">
+          <div class="footer-container">
+            <div class="footer-section">
+              <h4>サイト情報</h4>
+              <p>&copy; 2025 YourWebsite. All rights reserved.</p>
+              <p>ライセンス: <a href="#">CC BY-SA 4.0</a></p>
+            </div>
+            <div class="footer-section">
+              <h4>クイックリンク</h4>
+              <ul>
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">ブログ</a></li>
+                <li><a href="#">サービス</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>ソーシャルメディア</h4>
+              <ul>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                </li>
+                <li><a href="#">RSSフィード</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>お問い合わせ</h4>
+              <p>
+                Email: <a href="mailto:info@example.com">info@example.com</a>
+              </p>
+              <p>住所: 〒123-4567 xxxx県xxxx市</p>
+            </div>
+            <div class="footer-section newsletter">
+              <h4>ニュースレター登録</h4>
+              <form>
+                <input type="email" placeholder="メールアドレスを入力" />
+                <button type="submit">登録</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Last updated: 2025-01-24 17:21:48 +0900</p>
+        </div>
+      </footer>
     </div>
+
     <!-- 外部JavaScriptファイルを読み込む -->
     <script src="../../static/js/script.js"></script>
     <script src="../../static/js/copyToClipboard.js"></script>
