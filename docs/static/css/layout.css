@@ -148,29 +148,10 @@
   text-decoration: none;
 }
 .footer-section a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: red;
 }
-.newsletter form {
-  display: flex;
-  flex-direction: column;
-}
-.newsletter input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 5px;
-}
-.newsletter button {
-  padding: 10px;
-  border: none;
-  background: #f39c12;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.newsletter button:hover {
-  background: #e67e22;
-}
+
 .footer-bottom {
   text-align: center;
   padding: 10px 0;
